@@ -1,21 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import BottomTabNavigator from "./components/BottomTabNavigator"
+// import TopTabNavigator from "./components/TopTabNavigator"
 
-import Login from "./screens/Login"
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Login />
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <BottomTabNavigator />
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    minWidth: "100%",
-    flex: 1,
-    backgroundColor: "white"
-  },
-});
+
