@@ -2,10 +2,10 @@ import React from 'react';
 
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function Activités(props) {
+export default function health(props) {
     return (
         <View style={styles.container}>
-            <Text style={{ fontSize: 50, color: "white" }}>Activités</Text>
+            <Text style={{ fontSize: 50, color: "white" }}>Sanitaire</Text>
         </View>
     );
 }
@@ -13,7 +13,7 @@ export default function Activités(props) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#ffeaa7',
+        backgroundColor: '#00cec9',
         alignItems: 'center',
         justifyContent: 'center',
     },

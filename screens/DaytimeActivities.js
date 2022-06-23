@@ -2,10 +2,10 @@ import React from 'react';
 
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function Home(props) {
+export default function DaytimeActivities(props) {
     return (
         <View style={styles.container}>
-            <Text style={{ fontSize: 50, color: "white" }}>Home</Text>
+            <Text style={{ fontSize: 50, color: "white" }}>Activités</Text>
         </View>
     );
 }
@@ -13,7 +13,7 @@ export default function Home(props) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#ffb8b8',
+        backgroundColor: '#b2bec3',
         alignItems: 'center',
         justifyContent: 'center',
     },
