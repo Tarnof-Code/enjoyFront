@@ -3,38 +3,38 @@ import { Text, View, Button } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { Foundation } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
-import { Fontisto } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 
 const Tab = createMaterialTopTabNavigator();
 
-
-import Holidays from "../screens/Plannings/Holidays";
-import Laundry from "../screens/Plannings/Laundry";
-import MealTime from "../screens/Plannings/MealTime";
-import Surveillance from "../screens/Plannings/Surveillance";
-import WakeUp from "../screens/Plannings/WakeUp";
+import General from "../screens/Lists/General";
+import Crabs from "../screens/Lists/Crabs";
+import Sharks from "../screens/Lists/Sharks";
+import Octopuses from "../screens/Lists/Octopuses";
+import Animators from "../screens/Lists/Animators";
+import Bedrooms from "../screens/Lists/Bedrooms";
 
 
 function TopTab() {
 
     return (
         <Tab.Navigator
-            initialRouteName='WakeUp'
+            initialRouteName='General'
             tabBarOptions={{
                 activeTintColor: '#000000',
             }}
         >
             <Tab.Screen
-                name="WakeUp"
-                component={WakeUp}
+                name="General"
+                component={General}
                 options={{
                     title: ({ focused }) => (
-                        <Ionicons
-                            size={25}
-                            name="alarm"
+                        <Foundation
+                            size={30}
+                            name="torsos-all"
                             color={focused ? '#000000' : '#b2bec3'}
                         />
                     )
@@ -42,13 +42,55 @@ function TopTab() {
             />
 
             <Tab.Screen
-                name="MealTime"
-                component={MealTime}
+                name="Crabs"
+                component={Crabs}
+                options={{
+                    title: ({ focused }) => (
+                        <FontAwesome5
+                            size={25}
+                            name="pastafarianism"
+                            color={focused ? '#000000' : '#b2bec3'}
+                        />
+                    )
+                }}
+            />
+
+            <Tab.Screen
+                name="Sharks"
+                component={Sharks}
+                options={{
+                    title: ({ focused }) => (
+                        <MaterialCommunityIcons
+                            size={38}
+                            name="shark"
+                            color={focused ? '#000000' : '#b2bec3'}
+                        />
+                    )
+                }}
+            />
+
+            <Tab.Screen
+                name="Octopuses"
+                component={Octopuses}
+                options={{
+                    title: ({ focused }) => (
+                        <FontAwesome5
+                            size={25}
+                            name="octopus-deploy"
+                            color={focused ? '#000000' : '#b2bec3'}
+                        />
+                    )
+                }}
+            />
+
+            <Tab.Screen
+                name="Animators"
+                component={Animators}
                 options={{
                     title: ({ focused }) => (
                         <MaterialCommunityIcons
                             size={25}
-                            name="silverware-fork-knife"
+                            name="face-man-shimmer-outline"
                             color={focused ? '#000000' : '#b2bec3'}
                         />
                     )
@@ -56,47 +98,18 @@ function TopTab() {
             />
 
             <Tab.Screen
-                name="Surveillance"
-                component={Surveillance}
+                name="Bedrooms"
+                component={Bedrooms}
                 options={{
                     title: ({ focused }) => (
-                        <MaterialIcons
+                        <FontAwesome
                             size={25}
-                            name="local-police"
+                            name="bed"
                             color={focused ? '#000000' : '#b2bec3'}
                         />
                     )
                 }}
             />
-
-            <Tab.Screen
-                name="Laundry"
-                component={Laundry}
-                options={{
-                    title: ({ focused }) => (
-                        <MaterialIcons
-                            size={25}
-                            name="local-laundry-service"
-                            color={focused ? '#000000' : '#b2bec3'}
-                        />
-                    )
-                }}
-            />
-
-            <Tab.Screen
-                name="Holidays"
-                component={Holidays}
-                options={{
-                    title: ({ focused }) => (
-                        <Fontisto
-                            size={25}
-                            name="holiday-village"
-                            color={focused ? '#000000' : '#b2bec3'}
-                        />
-                    )
-                }}
-            />
-
 
 
 

@@ -5,13 +5,14 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 
 const Tab = createMaterialTopTabNavigator();
 
 
-import DaytimeActivities from "../screens/DaytimeActivities";
-import EveningActivities from "../screens/EveningActivities";
-import Trips from "../screens/Trips";
+import DaytimeActivities from "../screens/Activities/DaytimeActivities";
+import EveningActivities from "../screens/Activities/EveningActivities";
+import Trips from "../screens/Activities/Trips";
 
 function TopTab() {
 
@@ -27,9 +28,9 @@ function TopTab() {
                 component={DaytimeActivities}
                 options={{
                     title: ({ focused }) => (
-                        <MaterialCommunityIcons
+                        <MaterialIcons
                             size={25}
-                            name="baseball-bat"
+                            name="sports-kabaddi"
                             color={focused ? '#000000' : '#b2bec3'}
                         />
                     )
