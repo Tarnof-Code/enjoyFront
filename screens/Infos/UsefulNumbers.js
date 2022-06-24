@@ -2,10 +2,10 @@ import React from 'react';
 
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function Infos(props) {
+export default function UsefulNumbers(props) {
     return (
         <View style={styles.container}>
-            <Text style={{ fontSize: 50, color: "white" }}>Infos</Text>
+            <Text style={{ fontSize: 50, color: "white" }}>Numéros utiles</Text>
         </View>
     );
 }
@@ -13,7 +13,7 @@ export default function Infos(props) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#d63031',
+        backgroundColor: '#fc5c65',
         alignItems: 'center',
         justifyContent: 'center',
     },

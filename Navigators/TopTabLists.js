@@ -16,6 +16,7 @@ import Sharks from "../screens/Lists/Sharks";
 import Octopuses from "../screens/Lists/Octopuses";
 import Animators from "../screens/Lists/Animators";
 import Bedrooms from "../screens/Lists/Bedrooms";
+import Header from "../Components/Header";
 
 
 function TopTab() {
@@ -33,7 +34,7 @@ function TopTab() {
                 options={{
                     title: ({ focused }) => (
                         <Foundation
-                            size={30}
+                            size={25}
                             name="torsos-all"
                             color={focused ? '#000000' : '#b2bec3'}
                         />
@@ -61,8 +62,8 @@ function TopTab() {
                 options={{
                     title: ({ focused }) => (
                         <MaterialCommunityIcons
-                            size={38}
-                            name="shark"
+                            size={25}
+                            name="shark-fin"
                             color={focused ? '#000000' : '#b2bec3'}
                         />
                     )
@@ -117,10 +118,10 @@ function TopTab() {
     )
 }
 
-export default function TopTabPlannings() {
+export default function TopTabLists() {
     return (
         <SafeAreaProvider>
-            <View style={{ height: 110, backgroundColor: "#ffffff" }}></View>
+            <Header iconName="list-ul" title=" Listes" />
             <TopTab />
         </SafeAreaProvider>
 

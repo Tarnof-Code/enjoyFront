@@ -5,37 +5,36 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-import { Fontisto } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
+import { Foundation } from '@expo/vector-icons';
 
 const Tab = createMaterialTopTabNavigator();
 
 
-import Holidays from "../screens/Plannings/Holidays";
-import Laundry from "../screens/Plannings/Laundry";
-import MealTime from "../screens/Plannings/MealTime";
-import Surveillance from "../screens/Plannings/Surveillance";
-import WakeUp from "../screens/Plannings/WakeUp";
+import GeneralHealth from "../screens/Health/GeneralHealth";
+import EatingHealth from "../screens/Health/EatingHealth";
+import MedicalTreatments from "../screens/Health/MedicalTreatments";
+import WhatToDoIf from "../screens/Health/WhatToDoIf";
 import Header from '../Components/Header';
+
 
 
 function TopTab() {
 
     return (
         <Tab.Navigator
-            initialRouteName='WakeUp'
+            initialRouteName='GeneralHealth'
             tabBarOptions={{
                 activeTintColor: '#000000',
             }}
         >
             <Tab.Screen
-                name="WakeUp"
-                component={WakeUp}
+                name="GeneralHealth"
+                component={GeneralHealth}
                 options={{
                     title: ({ focused }) => (
-                        <Ionicons
+                        <Foundation
                             size={25}
-                            name="alarm"
+                            name="torsos-all"
                             color={focused ? '#000000' : '#b2bec3'}
                         />
                     )
@@ -43,8 +42,8 @@ function TopTab() {
             />
 
             <Tab.Screen
-                name="MealTime"
-                component={MealTime}
+                name="EatingHealth"
+                component={EatingHealth}
                 options={{
                     title: ({ focused }) => (
                         <MaterialCommunityIcons
@@ -57,13 +56,13 @@ function TopTab() {
             />
 
             <Tab.Screen
-                name="Surveillance"
-                component={Surveillance}
+                name="MedicalTreatments"
+                component={MedicalTreatments}
                 options={{
                     title: ({ focused }) => (
-                        <MaterialIcons
+                        <MaterialCommunityIcons
                             size={25}
-                            name="local-police"
+                            name="pill"
                             color={focused ? '#000000' : '#b2bec3'}
                         />
                     )
@@ -71,32 +70,19 @@ function TopTab() {
             />
 
             <Tab.Screen
-                name="Laundry"
-                component={Laundry}
+                name="WhatToDoIf"
+                component={WhatToDoIf}
                 options={{
                     title: ({ focused }) => (
-                        <MaterialIcons
+                        <MaterialCommunityIcons
                             size={25}
-                            name="local-laundry-service"
+                            name="account-question"
                             color={focused ? '#000000' : '#b2bec3'}
                         />
                     )
                 }}
             />
 
-            <Tab.Screen
-                name="Holidays"
-                component={Holidays}
-                options={{
-                    title: ({ focused }) => (
-                        <Fontisto
-                            size={25}
-                            name="holiday-village"
-                            color={focused ? '#000000' : '#b2bec3'}
-                        />
-                    )
-                }}
-            />
 
 
 
@@ -105,10 +91,10 @@ function TopTab() {
     )
 }
 
-export default function TopTabPlannings() {
+export default function TopTabHealth() {
     return (
         <SafeAreaProvider>
-            <Header iconName="calendar-alt" title=" Plannings" />
+            <Header iconName="notes-medical" title=" Sanitaire" />
             <TopTab />
         </SafeAreaProvider>
 

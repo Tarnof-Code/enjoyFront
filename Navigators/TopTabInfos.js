@@ -3,35 +3,34 @@ import { Text, View, Button } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 
 const Tab = createMaterialTopTabNavigator();
 
 
-import DaytimeActivities from "../screens/Activities/DaytimeActivities";
-import EveningActivities from "../screens/Activities/EveningActivities";
-import Trips from "../screens/Activities/Trips";
+import UsefulNumbers from "../screens/Infos/UsefulNumbers";
+import Regulations from "../screens/Infos/Regulations";
+import Weather from "../screens/Infos/Weather";
 import Header from '../Components/Header';
 
 function TopTab() {
 
     return (
         <Tab.Navigator
-            initialRouteName='DaytimeActivities'
+            initialRouteName='UsefulNumbers'
             tabBarOptions={{
                 activeTintColor: '#000000',
             }}
         >
             <Tab.Screen
-                name="DaytimeActivities"
-                component={DaytimeActivities}
+                name="UsefulNumbers"
+                component={UsefulNumbers}
                 options={{
                     title: ({ focused }) => (
-                        <MaterialIcons
+                        <Entypo
                             size={25}
-                            name="sports-kabaddi"
+                            name="old-phone"
                             color={focused ? '#000000' : '#b2bec3'}
                         />
                     )
@@ -39,27 +38,27 @@ function TopTab() {
             />
 
             <Tab.Screen
-                name="EveningActivities"
-                component={EveningActivities}
+                name="Regulations"
+                component={Regulations}
+                options={{
+                    title: ({ focused }) => (
+                        <Entypo
+                            size={25}
+                            name="book"
+                            color={focused ? '#000000' : '#b2bec3'}
+                        />
+                    )
+                }}
+            />
+
+            <Tab.Screen
+                name="Weather"
+                component={Weather}
                 options={{
                     title: ({ focused }) => (
                         <Ionicons
                             size={25}
-                            name="md-moon"
-                            color={focused ? '#000000' : '#b2bec3'}
-                        />
-                    )
-                }}
-            />
-
-            <Tab.Screen
-                name="Trips"
-                component={Trips}
-                options={{
-                    title: ({ focused }) => (
-                        <MaterialCommunityIcons
-                            size={25}
-                            name="bus"
+                            name="sunny"
                             color={focused ? '#000000' : '#b2bec3'}
                         />
                     )
@@ -73,10 +72,10 @@ function TopTab() {
     )
 }
 
-export default function TopTabActivities() {
+export default function TopTabInfos() {
     return (
         <SafeAreaProvider>
-            <Header iconName="dice" title=" Activités" />
+            <Header iconName="info-circle" title=" Infos utiles" />
             <TopTab />
         </SafeAreaProvider>
 
