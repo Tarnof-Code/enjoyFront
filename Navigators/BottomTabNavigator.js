@@ -4,8 +4,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
-import Login from "../screens/First Screens/Login";
-import Home from "../screens/First Screens/Home";
+import Login from "../screens/FirstScreens/Login";
+import Home from "../screens/FirstScreens/Home";
+import Header from '../Components/Header';
 
 import TopTabActivities from "./TopTabActivities"
 import TopTabPlannings from "./TopTabPlannings"
@@ -46,6 +47,7 @@ function BottomTab() {
             }}
         >
             <Tab.Screen options={{ tabBarButton: () => null }} name="Home" component={Home} />
+            <Tab.Screen options={{ tabBarButton: () => null }} name="Header" component={Header} />
             <Tab.Screen name="Listes" component={TopTabLists} />
             <Tab.Screen name="Plannings" component={TopTabPlannings} />
             <Tab.Screen name="Activités" component={TopTabActivities} />

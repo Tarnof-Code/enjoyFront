@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
+import { Button } from "react-native-elements";
 
 import { FontAwesome5 } from '@expo/vector-icons'; // Import the FontAwesome5 Icon Package
 import { useFonts, DancingScript_400Regular } from '@expo-google-fonts/dancing-script';
@@ -7,6 +8,7 @@ import { useFonts, DancingScript_400Regular } from '@expo-google-fonts/dancing-s
 
 
 export default function Header(props) {
+    let imageSource = require("../assets/PhotosAnims/Candice.jpg");
 
     let [fontsLoaded] = useFonts({
         DancingScript_400Regular
@@ -19,10 +21,14 @@ export default function Header(props) {
         return (
             <View style={styles.container}>
                 <View style={styles.alignElements}>
-                    <FontAwesome5 style={styles.icon} name={props.iconName} size={27} color="#000000" />
-                    <Text style={styles.title}>
-                        {props.title}
-                    </Text>
+                    <View style={styles.iconContainer}>
+                        <FontAwesome5 style={styles.icon} name={props.iconName} size={27} color="#000000" />
+                    </View >
+                    <View style={styles.textContainer}>
+                        <Text style={styles.title}>{props.title}</Text>
+                    </View>
+
+                    <Image source={imageSource} style={styles.image} />
                 </View>
             </View>
         );
@@ -31,13 +37,13 @@ export default function Header(props) {
 
 const styles = StyleSheet.create({
     container: {
-        height: 100,
+        height: 120,
         backgroundColor: '#ffffff',
         justifyContent: 'flex-end',
     },
     icon: {
-        marginLeft: 20,
-        marginBottom: 5
+        marginLeft: 15,
+        marginBottom: 4
     },
     alignElements: {
         flexDirection: 'row',
@@ -45,8 +51,22 @@ const styles = StyleSheet.create({
     },
     title: {
         fontFamily: 'DancingScript_400Regular',
-        marginLeft: 10,
         fontSize: 30,
-        marginBottom: 10
+        marginBottom: 9,
+
+
+    },
+    image: {
+        width: 70,
+        height: 70,
+        borderRadius: 100,
+        marginBottom: 7,
+    },
+    textContainer: {
+        width: "60%"
+    },
+    iconContainer: {
+        width: "15%"
     }
+
 });

@@ -94,7 +94,7 @@ function TopTab() {
 export default function TopTabHealth() {
     return (
         <SafeAreaProvider>
-            <Header iconName="notes-medical" title=" Sanitaire" />
+            <Header iconName="notes-medical" title="Sanitaire" />
             <TopTab />
         </SafeAreaProvider>
 

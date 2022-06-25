@@ -108,7 +108,7 @@ function TopTab() {
 export default function TopTabPlannings() {
     return (
         <SafeAreaProvider>
-            <Header iconName="calendar-alt" title=" Plannings" />
+            <Header iconName="calendar-alt" title="Plannings" />
             <TopTab />
         </SafeAreaProvider>
 

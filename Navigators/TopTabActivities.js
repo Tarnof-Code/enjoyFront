@@ -76,7 +76,7 @@ function TopTab() {
 export default function TopTabActivities() {
     return (
         <SafeAreaProvider>
-            <Header iconName="dice" title=" Activités" />
+            <Header iconName="dice" title="  Activités" />
             <TopTab />
         </SafeAreaProvider>
 

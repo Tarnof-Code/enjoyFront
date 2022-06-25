@@ -75,7 +75,7 @@ function TopTab() {
 export default function TopTabInfos() {
     return (
         <SafeAreaProvider>
-            <Header iconName="info-circle" title=" Infos utiles" />
+            <Header iconName="info-circle" title="Infos utiles" />
             <TopTab />
         </SafeAreaProvider>
 
