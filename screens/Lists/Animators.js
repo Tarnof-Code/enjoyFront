@@ -1,22 +1,14 @@
-import React from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { StyleSheet, Text, View } from 'react-native';
-import { Button } from "react-native-elements";
+import FetchLists from "../../Components/FetchLists";
 
-export default function Animators(props) {
+
+
+export default function Animator(props) {
     return (
-        <View style={styles.container}>
-            <Text style={{ fontSize: 50, color: "white" }}>Liste Animateurs</Text>
 
-        </View>
+        <SafeAreaProvider>
+            <FetchLists group="animators" />
+        </SafeAreaProvider>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#7efff5',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});

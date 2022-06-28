@@ -1,20 +1,14 @@
-import React from 'react';
+import FetchLists from "../../Components/FetchLists";
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { StyleSheet, Text, View } from 'react-native';
+
+
 
 export default function Octopuses(props) {
     return (
-        <View style={styles.container}>
-            <Text style={{ fontSize: 50, color: "white" }}>Liste poulpes</Text>
-        </View>
+
+        <SafeAreaProvider>
+            <FetchLists group="POULPES" />
+        </SafeAreaProvider>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#ff4d4d',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});

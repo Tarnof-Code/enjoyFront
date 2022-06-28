@@ -1,20 +1,14 @@
-import React from 'react';
+import FetchLists from "../../Components/FetchLists";
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { StyleSheet, Text, View } from 'react-native';
+
+
 
 export default function General(props) {
     return (
-        <View style={styles.container}>
-            <Text style={{ fontSize: 50, color: "white" }}>Liste générale</Text>
-        </View>
+
+        <SafeAreaProvider>
+            <FetchLists group="General" />
+        </SafeAreaProvider>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#cd84f1',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});

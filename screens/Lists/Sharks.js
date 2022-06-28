@@ -1,20 +1,14 @@
-import React from 'react';
+import FetchLists from "../../Components/FetchLists";
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { StyleSheet, Text, View } from 'react-native';
+
+
 
 export default function Sharks(props) {
     return (
-        <View style={styles.container}>
-            <Text style={{ fontSize: 50, color: "white" }}>Liste requins</Text>
-        </View>
+
+        <SafeAreaProvider>
+            <FetchLists group="REQUINS" />
+        </SafeAreaProvider>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#32ff7e',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});

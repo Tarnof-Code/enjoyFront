@@ -1,20 +1,16 @@
-import React from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { StyleSheet, Text, View } from 'react-native';
+import FetchLists from "../../Components/FetchLists";
 
-export default function Bedrooms(props) {
+
+
+
+
+export default function Animator(props) {
     return (
-        <View style={styles.container}>
-            <Text style={{ fontSize: 50, color: "white" }}>Liste chambres</Text>
-        </View>
+
+        <SafeAreaProvider>
+            <FetchLists group="bedrooms" />
+        </SafeAreaProvider>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#ff9f1a',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
