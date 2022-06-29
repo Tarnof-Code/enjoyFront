@@ -21,26 +21,23 @@ export default function AnimDropdown(props) {
         { label: "Vanessa", value: "Vanessa" },
     ]);
 
-    const [choice, setChoice] = useState(null);
-
-
 
     return (
         <View style={styles.dropdownBox}>
             <DropDownPicker
                 listMode="SCROLLVIEW"
                 style={styles.dropDownPicker}
-                dropDownContainerStyle={{ width: 150, }}
+                dropDownContainerStyle={{ width: "95%", }}
                 open={open}
                 value={value}
                 items={labels}
                 setOpen={setOpen}
                 setValue={setValue}
                 setItems={setLabels}
-                placeholder="Animateur"
+                placeholder="Choisir l'animateur"
                 placeholderStyle={{ color: "#576574", fontStyle: "italic" }}
                 onChangeValue={(value) => {
-                    setChoice(value);
+                    props.animSelectedParent(value);
                 }}
             />
         </View>
@@ -52,14 +49,12 @@ export default function AnimDropdown(props) {
 
 const styles = StyleSheet.create({
     dropDownPicker: {
-        width: 150,
-        marginTop: 10,
+        width: "95%",
+        marginTop: 6,
+        marginBottom: 6,
         zIndex: -1,
         borderRadius: 8,
-        borderLeftWidth: 4,
-        borderRightWidth: 4,
         borderColor: "#121851",
-        borderWidth: 0,
     },
     dropdownBox: {
         justifyContent: 'center',

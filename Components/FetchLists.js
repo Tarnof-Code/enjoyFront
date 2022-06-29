@@ -9,15 +9,25 @@ import AnimDropdown from './AnimDropdown';
 
 
 
-export default function FetchListGroup(props) {
+export default function FetchLists(props) {
 
     const [list, setList] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [animChoice, setAnimChoice] = useState(null);
+    const [bedroomChoice, setBedroomChoice] = useState(null);
+
+    var animSelected = (animChoice) => {
+        setAnimChoice(animChoice);
+    };
+
+    var bedroomSelected = (bedroomChoice) => {
+        setBedroomChoice(bedroomChoice)
+    };
 
     useEffect(() => {
         async function getLists() {
             let brutResponse = await fetch(
-                "https://sheets.googleapis.com/v4/spreadsheets/1XBJavKcAtwZAlpG_F3p2mHAkPybxxGywL7sXWw3Y8VI/values/listeAdaptée!B4:J105?dateTimeRenderOption=FORMATTED_STRING&majorDimension=ROWS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
+                "https://sheets.googleapis.com/v4/spreadsheets/1XBJavKcAtwZAlpG_F3p2mHAkPybxxGywL7sXWw3Y8VI/values/listeAdaptée!B4:L105?dateTimeRenderOption=FORMATTED_STRING&majorDimension=ROWS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
             );
             let response = await brutResponse.json();
 
@@ -54,6 +64,8 @@ export default function FetchListGroup(props) {
                     imageSrc: grpeAvatar,
                     room: response.values[i][7],
                     birthday: cake,
+                    groupAnim: response.values[i][9],
+                    bedroomAnim: response.values[i][10],
 
                 })
             }
@@ -73,6 +85,10 @@ export default function FetchListGroup(props) {
 
     if (props.group === "General") {
         filter = list
+    } else if (props.group === "animators") {
+        filter = list.filter(child => child.groupAnim === animChoice)
+    } else if (props.group === "bedrooms") {
+        filter = list.filter(child => child.room === bedroomChoice)
     } else {
         filter = list.filter(child => child.group === props.group)
     }
@@ -90,15 +106,23 @@ export default function FetchListGroup(props) {
     ))
     if (loading) {
         return (
-            <View style={styles.loading}>
-                <Text>Loading...</Text>
+            <View style={styles.loadingBox}>
+                <Text style={styles.loadingText}>Attends... Ça charge !</Text>
             </View>
         )
     } else {
         return (
             <View style={styles.container}>
-                {props.group === "bedrooms" && (<View style={{ alignItems: "center" }}><BedroomDropdown /></View>)}
-                {props.group === "animators" && (<View style={{ alignItems: "center" }}><AnimDropdown /></View>)}
+                {props.group === "bedrooms" && (
+                    <View style={{ alignItems: "center" }}>
+                        <BedroomDropdown bedroomSelectedParent={bedroomSelected} />
+                    </View>
+                )}
+                {props.group === "animators" && (
+                    <View style={{ alignItems: "center" }}>
+                        <AnimDropdown animSelectedParent={animSelected} />
+                    </View>
+                )}
                 <ScrollView>
                     {filteredList}
                 </ScrollView>
@@ -116,11 +140,14 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: "#121851"
     },
-    loading: {
-        justifyContent: 'center',
-        alignItems: 'center',
+    loadingText: {
         fontStyle: 'italic',
         fontSize: 20,
-        fontWeight: 'bold',
+        fontWeight: '400',
+    },
+    loadingBox: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 });

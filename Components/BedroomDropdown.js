@@ -7,41 +7,37 @@ export default function RoomDropdown(props) {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
     const [labels, setLabels] = useState([
-        { label: "A1", value: "A01" },
-        { label: "A2", value: "A02" },
-        { label: "A3", value: "A03" },
-        { label: "A4", value: "A04" },
-        { label: "A5", value: "A05" },
-        { label: "B1", value: "B01" },
-        { label: "B2", value: "B02" },
-        { label: "B3", value: "B03" },
-        { label: "B4", value: "B04" },
-        { label: "B5", value: "B05" },
-        { label: "B6", value: "B06" },
-        { label: "B7", value: "B07" },
-        { label: "B8", value: "B08" },
+        { label: "A1", value: "A1" },
+        { label: "A2", value: "A2" },
+        { label: "A3", value: "A3" },
+        { label: "A4", value: "A4" },
+        { label: "A5", value: "A5" },
+        { label: "B1", value: "B1" },
+        { label: "B2", value: "B2" },
+        { label: "B3", value: "B3" },
+        { label: "B4", value: "B4" },
+        { label: "B5", value: "B5" },
+        { label: "B6", value: "B6" },
+        { label: "B7", value: "B7" },
+        { label: "B8", value: "B8" },
     ]);
-
-    const [choice, setChoice] = useState(null);
-
-
 
     return (
         <View style={styles.dropdownBox}>
             <DropDownPicker
                 listMode="SCROLLVIEW"
                 style={styles.dropDownPicker}
-                dropDownContainerStyle={{ width: 150 }}
+                dropDownContainerStyle={{ width: "95%" }}
                 open={open}
                 value={value}
                 items={labels}
                 setOpen={setOpen}
                 setValue={setValue}
                 setItems={setLabels}
-                placeholder="Chambre"
+                placeholder="Quelle chambre ?"
                 placeholderStyle={{ color: "#576574", fontStyle: "italic" }}
                 onChangeValue={(value) => {
-                    setChoice(value);
+                    props.bedroomSelectedParent(value);
                 }}
             />
         </View>
@@ -53,14 +49,12 @@ export default function RoomDropdown(props) {
 
 const styles = StyleSheet.create({
     dropDownPicker: {
-        width: 150,
-        marginTop: 10,
+        width: "95%",
+        marginTop: 6,
+        marginBottom: 6,
         zIndex: -1,
         borderRadius: 8,
-        borderLeftWidth: 4,
-        borderRightWidth: 4,
         borderColor: "#121851",
-        borderWidth: 0,
     },
     dropdownBox: {
         justifyContent: 'center',
