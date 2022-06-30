@@ -34,6 +34,8 @@ function BottomTab() {
                         iconName = 'notes-medical'
                     } else if (route.name === 'Infos utiles') {
                         iconName = 'info-circle'
+                    } else if (route.name === 'Home') {
+                        iconName = 'home'
                     }
                     return <FontAwesome5 name={iconName} size={25} color={color} />;
 
@@ -46,8 +48,8 @@ function BottomTab() {
                 // showLabel: false,
             }}
         >
-            <Tab.Screen options={{ tabBarButton: () => null }} name="Home" component={Home} />
-            <Tab.Screen options={{ tabBarButton: () => null }} name="Header" component={Header} />
+            <Tab.Screen name="Home" component={Home} />
+            {/* <Tab.Screen options={{ tabBarButton: () => null }} name="Header" component={Header} /> */}
             <Tab.Screen name="Listes" component={TopTabLists} />
             <Tab.Screen name="Plannings" component={TopTabPlannings} />
             <Tab.Screen name="Activités" component={TopTabActivities} />

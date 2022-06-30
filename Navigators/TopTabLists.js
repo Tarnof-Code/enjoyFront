@@ -118,7 +118,7 @@ function TopTab() {
     )
 }
 
-export default function TopTabLists() {
+export default function TopTabLists(props) {
     return (
         <SafeAreaProvider>
             <Header iconName="list-ul" title=" Listes" />

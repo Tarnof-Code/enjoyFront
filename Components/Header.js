@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
-import { Button } from "react-native-elements";
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 
 import { FontAwesome5 } from '@expo/vector-icons'; // Import the FontAwesome5 Icon Package
 import { useFonts, DancingScript_400Regular } from '@expo-google-fonts/dancing-script';
@@ -27,8 +26,16 @@ export default function Header(props) {
                     <View style={styles.textContainer}>
                         <Text style={styles.title}>{props.title}</Text>
                     </View>
+                    {/* <TouchableOpacity onPress={() => {
+                        console.log("Nique ta mère")
+                        // props.navigation.navigate('BottomTab', { screen: "Home" })
 
-                    <Image source={imageSource} style={styles.image} />
+                    }}> */}
+                    <Image
+                        source={imageSource}
+                        style={styles.image}
+                    />
+                    {/* </TouchableOpacity> */}
                 </View>
             </View>
         );
