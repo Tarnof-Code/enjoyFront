@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { ListItem, Avatar } from 'react-native-elements'
-
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
+
+import { connect } from 'react-redux';
+
 import BedroomDropdown from './BedroomDropdown';
 import AnimDropdown from './AnimDropdown';
+import BirthdayOverlay from './birthdayOverlay';
 
 
 
 
 
-export default function FetchLists(props) {
+function FetchLists(props) {
 
     const [list, setList] = useState([]);
     const [loading, setLoading] = useState(true);
     const [animChoice, setAnimChoice] = useState(null);
     const [bedroomChoice, setBedroomChoice] = useState(null);
+
 
     var animSelected = (animChoice) => {
         setAnimChoice(animChoice);
@@ -80,6 +84,8 @@ export default function FetchLists(props) {
 
     }, [])
 
+
+
     let filter
     let filteredList
 
@@ -101,9 +107,16 @@ export default function FetchLists(props) {
                 <ListItem.Title>{e.lastName}</ListItem.Title>
                 <ListItem.Subtitle>{e.firstName}</ListItem.Subtitle>
             </ListItem.Content>
-            <Avatar source={e.birthday} />
+            <Avatar
+                key={i}
+                source={e.birthday}
+                onPress={() => {
+                    props.onCakeClick(e.birthDate)
+                }}
+            />
         </ListItem>
     ))
+
     if (loading) {
         return (
             <View style={styles.loadingBox}>
@@ -111,10 +124,12 @@ export default function FetchLists(props) {
             </View>
         )
     } else {
+
         return (
             <View style={styles.container}>
+                <BirthdayOverlay />
                 {props.group === "bedrooms" && (
-                    <View style={{ alignItems: "center" }}>
+                    <View style={{ alignItems: "center", marginLeft: 10 }}>
                         <BedroomDropdown bedroomSelectedParent={bedroomSelected} />
                     </View>
                 )}
@@ -151,3 +166,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     }
 });
+
+function mapDispatchToProps(dispatch) {
+    return {
+        onCakeClick: function (date) {
+            dispatch({ type: 'show', date: date })
+        }
+    }
+}
+export default connect(null, mapDispatchToProps)(FetchLists);

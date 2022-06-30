@@ -34,7 +34,7 @@ export default function AnimDropdown(props) {
                 setOpen={setOpen}
                 setValue={setValue}
                 setItems={setLabels}
-                placeholder="Choisir l'animateur"
+                placeholder="Quel animateur ?"
                 placeholderStyle={{ color: "#576574", fontStyle: "italic" }}
                 onChangeValue={(value) => {
                     props.animSelectedParent(value);

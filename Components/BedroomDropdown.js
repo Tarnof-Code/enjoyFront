@@ -4,22 +4,39 @@ import DropDownPicker from "react-native-dropdown-picker";
 
 export default function RoomDropdown(props) {
 
+    let roomList = [
+        { room: "A1", anim: "Emy", number: "6", group: "Crabes", sex: "filles" },
+        { room: "A2", anim: "Khoudeyi", number: "6", group: "Crabes", sex: "filles" },
+        { room: "A3", anim: "Emy", number: "6", group: "Crabes", sex: "filles" },
+        { room: "A1", anim: "Emy", number: "6", group: "Crabes", sex: "filles" },
+        { room: "A1", anim: "Emy", number: "6", group: "Crabes", sex: "filles" },
+        { room: "A1", anim: "Emy", number: "6", group: "Crabes", sex: "filles" },
+        { room: "A1", anim: "Emy", number: "6", group: "Crabes", sex: "filles" },
+        { room: "A1", anim: "Emy", number: "6", group: "Crabes", sex: "filles" },
+        { room: "A1", anim: "Emy", number: "6", group: "Crabes", sex: "filles" },
+        { room: "A1", anim: "Emy", number: "6", group: "Crabes", sex: "filles" },
+        { room: "A1", anim: "Emy", number: "6", group: "Crabes", sex: "filles" },
+        { room: "A1", anim: "Emy", number: "6", group: "Crabes", sex: "filles" },
+        { room: "A1", anim: "Emy", number: "6", group: "Crabes", sex: "filles" },
+
+    ]
+
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
     const [labels, setLabels] = useState([
-        { label: "A1", value: "A1" },
-        { label: "A2", value: "A2" },
-        { label: "A3", value: "A3" },
-        { label: "A4", value: "A4" },
-        { label: "A5", value: "A5" },
-        { label: "B1", value: "B1" },
-        { label: "B2", value: "B2" },
-        { label: "B3", value: "B3" },
-        { label: "B4", value: "B4" },
-        { label: "B5", value: "B5" },
-        { label: "B6", value: "B6" },
-        { label: "B7", value: "B7" },
-        { label: "B8", value: "B8" },
+        { label: "A1     EMY           6 Crabes filles", value: "A1" },
+        { label: "A2     KHOUDEYI      6 Crabes filles", value: "A2" },
+        { label: "A3     VANESSA       12 Poulpes filles", value: "A3" },
+        { label: "A4     CANDICE       11 Requins filles", value: "A4" },
+        { label: "A5     MAËVA         11 Requins filles", value: "A5" },
+        { label: "B1     SAMIR         5 Requins garçons", value: "B1" },
+        { label: "B2     Christian     5 Requins garçons", value: "B2" },
+        { label: "B3     DELAIR        6 Crabes garçons", value: "B3" },
+        { label: "B4     ROMAIN        5 Crabes garçons", value: "B4" },
+        { label: "B5     BASTIEN       6 Sardines garçons", value: "B5" },
+        { label: "B6     BASTIEN       5 Poulpes garçons", value: "B6" },
+        { label: "B7     RUDY          6 Poulpes garçons", value: "B7" },
+        { label: "B8     RUDY          6 Poulpes garçons", value: "B8" },
     ]);
 
     return (
