@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
 import { useFonts, DancingScript_400Regular } from '@expo-google-fonts/dancing-script';
@@ -8,16 +8,19 @@ import moment from 'moment'
 import 'moment/locale/fr'  // without this line it didn't work
 moment.locale('fr')
 
+import { connect } from 'react-redux';
 
-export default function Home(props) {
 
+function Home(props) {
+
+    const [imageSource, setImageSource] = useState(require("../../assets/PhotosAnims/EMY.jpg"))
 
     let [fontsLoaded] = useFonts({
         DancingScript_400Regular,
         Roboto_400Regular
     });
 
-    let imageSource = require("../../assets/PhotosAnims/Candice.jpg");
+
 
     let date = new Date()
     let todayDate = moment(date).format("dddd DD MMM YYYY")
@@ -33,7 +36,7 @@ export default function Home(props) {
                 </View>
                 <View style={styles.welcomeBox}>
                     <Image source={imageSource} style={styles.image} />
-                    <Text style={styles.welcomeMsg}>Salut Candice !</Text>
+                    <Text style={styles.welcomeMsg}>Salut {props.animName} !</Text>
                 </View>
                 <Text style={styles.date}>
                     {todayDate}
@@ -107,3 +110,9 @@ const styles = StyleSheet.create({
 
     }
 });
+
+function mapStateToProps(state) {
+    return { animName: state.animName };
+}
+
+export default connect(mapStateToProps, null)(Home);

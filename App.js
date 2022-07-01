@@ -4,8 +4,9 @@ import { Provider } from "react-redux";
 import { createStore, combineReducers } from 'redux';
 
 import birthdayOverlayReducer from './Reducers/birthdayOverlayReducer';
+import animName from './Reducers/animNameReducer'
 
-const store = createStore(combineReducers({ birthdayOverlayReducer }));
+const store = createStore(combineReducers({ birthdayOverlayReducer, animName }));
 
 export default function App() {
   return (

@@ -8,9 +8,11 @@ import { PTSans_400Regular } from '@expo-google-fonts/pt-sans';
 
 import Icon from "react-native-vector-icons/Ionicons";
 
-export default function Login(props) {
+import { connect } from 'react-redux';
 
-    const [mail, setMail] = useState("");
+function Login(props) {
+
+    const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [passwordVisible, setPasswordVisible] = useState(true);
     const [checked, setChecked] = useState(false);
@@ -37,8 +39,8 @@ export default function Login(props) {
                             placeholder="Nom de l'animateur"
                             style={styles.input}
                             underlineColor="transparent"
-                            value={mail}
-                            onChangeText={(value) => setMail(value)}
+                            value={name}
+                            onChangeText={(value) => setName(value)}
                         />
                     </View>
 
@@ -79,6 +81,7 @@ export default function Login(props) {
                             buttonStyle={styles.button}
                             title="Se connecter"
                             onPress={() => {
+                                props.onSetAnimName(name)
                                 props.navigation.navigate('BottomTab', { screen: "Home" });
                             }}
                         ></Button>
@@ -158,3 +161,17 @@ const styles = StyleSheet.create({
         marginLeft: -20,
     },
 });
+
+
+function mapStateToProps(state) {
+    return { animName: state.animName };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        onSetAnimName: function (animName) {
+            dispatch({ type: 'setName', animName: animName })
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

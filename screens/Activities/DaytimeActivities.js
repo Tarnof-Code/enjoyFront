@@ -1,20 +1,14 @@
-import React from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { StyleSheet, Text, View } from 'react-native';
+import FetchActivities from "../../Components/FetchActivities";
+
+
 
 export default function DaytimeActivities(props) {
     return (
-        <View style={styles.container}>
-            <Text style={{ fontSize: 50, color: "white" }}>Activités</Text>
-        </View>
+
+        <SafeAreaProvider>
+            <FetchActivities />
+        </SafeAreaProvider>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#b2bec3',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
