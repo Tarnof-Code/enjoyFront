@@ -1,20 +1,14 @@
-import React from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { StyleSheet, Text, View } from 'react-native';
+import FetchEvening from "../../Components/FetchEvening";
+
+
 
 export default function EveningActivities(props) {
     return (
-        <View style={styles.container}>
-            <Text style={{ fontSize: 50, color: "white" }}>Veillées</Text>
-        </View>
+
+        <SafeAreaProvider>
+            <FetchEvening />
+        </SafeAreaProvider>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#0984e3',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});

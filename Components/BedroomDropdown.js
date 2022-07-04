@@ -4,23 +4,6 @@ import DropDownPicker from "react-native-dropdown-picker";
 
 export default function RoomDropdown(props) {
 
-    let roomList = [
-        { room: "A1", anim: "Emy", number: "6", group: "Crabes", sex: "filles" },
-        { room: "A2", anim: "Khoudeyi", number: "6", group: "Crabes", sex: "filles" },
-        { room: "A3", anim: "Emy", number: "6", group: "Crabes", sex: "filles" },
-        { room: "A1", anim: "Emy", number: "6", group: "Crabes", sex: "filles" },
-        { room: "A1", anim: "Emy", number: "6", group: "Crabes", sex: "filles" },
-        { room: "A1", anim: "Emy", number: "6", group: "Crabes", sex: "filles" },
-        { room: "A1", anim: "Emy", number: "6", group: "Crabes", sex: "filles" },
-        { room: "A1", anim: "Emy", number: "6", group: "Crabes", sex: "filles" },
-        { room: "A1", anim: "Emy", number: "6", group: "Crabes", sex: "filles" },
-        { room: "A1", anim: "Emy", number: "6", group: "Crabes", sex: "filles" },
-        { room: "A1", anim: "Emy", number: "6", group: "Crabes", sex: "filles" },
-        { room: "A1", anim: "Emy", number: "6", group: "Crabes", sex: "filles" },
-        { room: "A1", anim: "Emy", number: "6", group: "Crabes", sex: "filles" },
-
-    ]
-
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
     const [labels, setLabels] = useState([

@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { ListItem, Avatar } from 'react-native-elements'
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
-import { connect } from 'react-redux';
+import moment from 'moment'
+import 'moment/locale/fr'  // without this line it didn't work
+moment.locale('fr')
 
 
 import AnimAndGroupDropdown from './AnimAndGroupDropdown';
-
-
-
-
+import DatesDropdown from './DatesDropdown';
 
 
 export default function FetchActivities(props) {
@@ -17,79 +16,82 @@ export default function FetchActivities(props) {
     const [actiList, setActiList] = useState([]);
     const [loading, setLoading] = useState(true);
     const [animGroupChoice, setAnimGroupChoice] = useState(null);
+    const [dateChoice, setDateChoice] = useState(null);
 
 
 
-    var animOrGroupSelected = (selection) => {
-        setAnimGroupChoice(selection);
+    var animOrGroupSelected = (animGroupSelect) => {
+        setAnimGroupChoice(animGroupSelect);
     };
 
-
+    var dateSelected = (dateSelect) => {
+        setDateChoice(dateSelect);
+    };
 
     useEffect(() => {
         async function getActivities() {
             let brutResponse1 = await fetch(
-                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B1:T5?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
+                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B1:T6?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
             );
             let response1 = await brutResponse1.json();
 
             let brutResponse2 = await fetch(
-                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B7:T11?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
+                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B7:T12?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
             );
             let response2 = await brutResponse2.json();
 
             let brutResponse3 = await fetch(
-                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B13:T17?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
+                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B13:T18?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
             );
             let response3 = await brutResponse3.json();
 
             let brutResponse4 = await fetch(
-                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B19:T23?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
+                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B19:T24?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
             );
             let response4 = await brutResponse4.json();
 
             let brutResponse5 = await fetch(
-                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B25:T29?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
+                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B25:T30?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
             );
             let response5 = await brutResponse5.json();
 
             let brutResponse6 = await fetch(
-                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B31:T35?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
+                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B31:T36?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
             );
             let response6 = await brutResponse6.json();
 
             let brutResponse7 = await fetch(
-                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B37:T41?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
+                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B37:T42?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
             );
             let response7 = await brutResponse7.json();
 
             let brutResponse8 = await fetch(
-                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B43:T47?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
+                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B43:T48?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
             );
             let response8 = await brutResponse8.json();
 
             let brutResponse9 = await fetch(
-                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B49:T53?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
+                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B49:T54?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
             );
             let response9 = await brutResponse9.json();
 
             let brutResponse10 = await fetch(
-                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B55:T59?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
+                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B55:T60?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
             );
             let response10 = await brutResponse10.json();
 
             let brutResponse11 = await fetch(
-                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B61:T65?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
+                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B61:T66?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
             );
             let response11 = await brutResponse11.json();
 
             let brutResponse12 = await fetch(
-                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B67:T71?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
+                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B67:T72?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
             );
             let response12 = await brutResponse12.json();
 
             let brutResponse13 = await fetch(
-                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B73:T77?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
+                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Par anim!B73:T78?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
             );
             let response13 = await brutResponse13.json();
 
@@ -105,7 +107,7 @@ export default function FetchActivities(props) {
                     anim: response1.values[i][2],
                     morning: response1.values[i][3],
                     afternoon: response1.values[i][4],
-                    photo: require("../assets/LogosGroupes/Crabe.jpg")
+                    photo: require("../assets/PhotosAnims/ROMAIN.jpeg")
 
                 });
             }
@@ -117,7 +119,7 @@ export default function FetchActivities(props) {
                     anim: response2.values[j][2],
                     morning: response2.values[j][3],
                     afternoon: response2.values[j][4],
-                    photo: require("../assets/LogosGroupes/Crabe.jpg")
+                    photo: require("../assets/PhotosAnims/KHOUDEYI.jpeg")
                 });
             };
 
@@ -128,7 +130,7 @@ export default function FetchActivities(props) {
                     anim: response3.values[k][2],
                     morning: response3.values[k][3],
                     afternoon: response3.values[k][4],
-                    photo: require("../assets/LogosGroupes/Crabe.jpg")
+                    photo: require("../assets/PhotosAnims/NICOLAS.jpg")
                 });
             };
 
@@ -139,7 +141,7 @@ export default function FetchActivities(props) {
                     anim: response4.values[l][2],
                     morning: response4.values[l][3],
                     afternoon: response4.values[l][4],
-                    photo: require("../assets/LogosGroupes/Crabe.jpg")
+                    photo: require("../assets/PhotosAnims/EMY.jpg")
                 });
             };
 
@@ -150,7 +152,7 @@ export default function FetchActivities(props) {
                     anim: response5.values[m][2],
                     morning: response5.values[m][3],
                     afternoon: response5.values[m][4],
-                    photo: require("../assets/LogosGroupes/Crabe.jpg")
+                    photo: require("../assets/PhotosAnims/SAMIR.jpg")
                 });
             };
 
@@ -161,7 +163,7 @@ export default function FetchActivities(props) {
                     anim: response6.values[n][2],
                     morning: response6.values[n][3],
                     afternoon: response6.values[n][4],
-                    photo: require("../assets/LogosGroupes/Crabe.jpg")
+                    photo: require("../assets/PhotosAnims/CHRISTIAN.jpg")
                 });
             };
 
@@ -172,7 +174,7 @@ export default function FetchActivities(props) {
                     anim: response7.values[o][2],
                     morning: response7.values[o][3],
                     afternoon: response7.values[o][4],
-                    photo: require("../assets/LogosGroupes/Crabe.jpg")
+                    photo: require("../assets/PhotosAnims/MAEVA.jpeg")
                 });
             };
 
@@ -183,7 +185,7 @@ export default function FetchActivities(props) {
                     anim: response8.values[p][2],
                     morning: response8.values[p][3],
                     afternoon: response8.values[p][4],
-                    photo: require("../assets/LogosGroupes/Crabe.jpg")
+                    photo: require("../assets/PhotosAnims/CANDICE.jpg")
                 });
             };
 
@@ -194,7 +196,7 @@ export default function FetchActivities(props) {
                     anim: response9.values[q][2],
                     morning: response9.values[q][3],
                     afternoon: response9.values[q][4],
-                    photo: require("../assets/LogosGroupes/Crabe.jpg")
+                    photo: require("../assets/PhotosAnims/DIRECTION1.jpg")
                 });
             };
 
@@ -205,7 +207,7 @@ export default function FetchActivities(props) {
                     anim: response10.values[r][2],
                     morning: response10.values[r][3],
                     afternoon: response10.values[r][4],
-                    photo: require("../assets/LogosGroupes/Crabe.jpg")
+                    photo: require("../assets/PhotosAnims/RUDY.jpg")
                 });
             };
 
@@ -216,7 +218,7 @@ export default function FetchActivities(props) {
                     anim: response11.values[s][2],
                     morning: response11.values[s][3],
                     afternoon: response11.values[s][4],
-                    photo: require("../assets/LogosGroupes/Crabe.jpg")
+                    photo: require("../assets/PhotosAnims/DIRECTION2.png")
                 });
             };
 
@@ -227,7 +229,7 @@ export default function FetchActivities(props) {
                     anim: response12.values[t][2],
                     morning: response12.values[t][3],
                     afternoon: response12.values[t][4],
-                    photo: require("../assets/LogosGroupes/Crabe.jpg")
+                    photo: require("../assets/PhotosAnims/BASTIEN.jpg")
                 });
             };
 
@@ -238,7 +240,7 @@ export default function FetchActivities(props) {
                     anim: response13.values[u][2],
                     morning: response13.values[u][3],
                     afternoon: response13.values[u][4],
-                    photo: require("../assets/LogosGroupes/Crabe.jpg")
+                    photo: require("../assets/PhotosAnims/VANESSA.jpg")
                 });
             };
             setLoading(false);
@@ -252,10 +254,33 @@ export default function FetchActivities(props) {
 
     }, [])
 
+    let filter
+    let filteredList
 
-    filteredList = actiList.map((e, i) => (
+    if (animGroupChoice === null || (animGroupChoice.toLowerCase() === "tous")) {
+        let date = new Date()
+        if (date < new Date("2022-07-11")) {
+            date = new Date("2022-07-11")
+        }
+        let todayDate = moment(date).format("DD/MM/YYYY")
+        filter = actiList.filter(acti => acti.date === todayDate)
+    } else if (dateChoice === null) {
+        let date = new Date()
+        if (date < new Date("2022-07-11")) {
+            date = new Date("2022-07-11")
+        }
+        let todayDate = moment(date).format("DD/MM/YYYY")
+        filter = actiList.filter(acti => acti.date === todayDate && acti.group.toLowerCase() === animGroupChoice.toLowerCase())
+    } else {
+        filter = actiList.filter(acti => acti.date === dateChoice && acti.group.toLowerCase() === animGroupChoice.toLowerCase())
+    }
+
+
+
+
+    filteredList = filter.map((e, i) => (
         <ListItem key={i} bottomDivider >
-            <Avatar source={e.photo} />
+            <Avatar style={styles.avatar} source={e.photo} />
             <ListItem.Content >
                 <ListItem.Title style={{ color: "blue" }}>Matin: {e.morning}</ListItem.Title>
                 <ListItem.Title style={{ color: "green" }}>Aprem: {e.afternoon}</ListItem.Title>
@@ -274,6 +299,7 @@ export default function FetchActivities(props) {
         return (
             <View style={styles.container}>
                 <View style={{ alignItems: "center" }}>
+                    <DatesDropdown dateSelectedParent={dateSelected} />
                     <AnimAndGroupDropdown animOrGroupSelectedParent={animOrGroupSelected} />
                 </View>
                 <ScrollView>
@@ -298,6 +324,11 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    avatar: {
+        width: 50,
+        height: 50,
+        borderRadius: 100,
     }
 });
 

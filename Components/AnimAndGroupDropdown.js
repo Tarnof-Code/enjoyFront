@@ -12,22 +12,11 @@ export default function AnimAndGroupDropdown(props) {
         { label: "Crabes", value: "Crabes" },
         { label: "Requins", value: "Requins" },
         { label: "Poulpes", value: "Poulpes" },
-        { label: "Bastien", value: "Bastien" },
-        { label: "Candice", value: "Candice" },
-        { label: "Christian", value: "Christian" },
-        { label: "Emy", value: "Emy" },
-        { label: "Khoudeyi", value: "Khoudeyi" },
-        { label: "Maëva", value: "Maëva" },
-        { label: "Nicolas", value: "Nicolas" },
-        { label: "Romain", value: "Romain" },
-        { label: "Rudy", value: "Rudy" },
-        { label: "Samir", value: "Samir" },
-        { label: "Vanessa", value: "Vanessa" },
     ]);
 
 
     return (
-        <View style={styles.dropdownBox}>
+        <View>
             <DropDownPicker
                 listMode="SCROLLVIEW"
                 style={styles.dropDownPicker}
@@ -38,7 +27,7 @@ export default function AnimAndGroupDropdown(props) {
                 setOpen={setOpen}
                 setValue={setValue}
                 setItems={setLabels}
-                placeholder="Choisir anim / groupe"
+                placeholder="Quel groupe ?"
                 placeholderStyle={{ color: "#576574", fontStyle: "italic" }}
                 onChangeValue={(value) => {
                     props.animOrGroupSelectedParent(value);
@@ -54,17 +43,13 @@ export default function AnimAndGroupDropdown(props) {
 const styles = StyleSheet.create({
     dropDownPicker: {
         width: "95%",
-        marginTop: 6,
+        // marginTop: 6,
         marginBottom: 6,
         zIndex: -1,
         borderRadius: 8,
+        borderLeftWidth: 4,
         borderColor: "#121851",
     },
-    dropdownBox: {
-        justifyContent: 'center',
-        alignItems: 'center',
-
-    }
 
 })
 
