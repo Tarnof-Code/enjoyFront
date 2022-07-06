@@ -7,7 +7,7 @@ import 'moment/locale/fr'  // without this line it didn't work
 moment.locale('fr')
 
 
-import AnimAndGroupDropdown from './AnimAndGroupDropdown';
+import AllAndGroupDropdown from './AllAndGroupDropdown';
 import DatesDropdown from './DatesDropdown';
 
 
@@ -107,7 +107,7 @@ export default function FetchActivities(props) {
                     anim: response1.values[i][2],
                     morning: response1.values[i][3],
                     afternoon: response1.values[i][4],
-                    photo: require("../assets/PhotosAnims/ROMAIN.jpeg")
+                    photo: require("../assets/PhotosAnims/romain.jpeg")
 
                 });
             }
@@ -119,7 +119,7 @@ export default function FetchActivities(props) {
                     anim: response2.values[j][2],
                     morning: response2.values[j][3],
                     afternoon: response2.values[j][4],
-                    photo: require("../assets/PhotosAnims/KHOUDEYI.jpeg")
+                    photo: require("../assets/PhotosAnims/khoudeyi.jpeg")
                 });
             };
 
@@ -130,7 +130,7 @@ export default function FetchActivities(props) {
                     anim: response3.values[k][2],
                     morning: response3.values[k][3],
                     afternoon: response3.values[k][4],
-                    photo: require("../assets/PhotosAnims/NICOLAS.jpg")
+                    photo: require("../assets/PhotosAnims/nicolas.jpg")
                 });
             };
 
@@ -141,7 +141,7 @@ export default function FetchActivities(props) {
                     anim: response4.values[l][2],
                     morning: response4.values[l][3],
                     afternoon: response4.values[l][4],
-                    photo: require("../assets/PhotosAnims/EMY.jpg")
+                    photo: require("../assets/PhotosAnims/emy.jpg")
                 });
             };
 
@@ -152,7 +152,7 @@ export default function FetchActivities(props) {
                     anim: response5.values[m][2],
                     morning: response5.values[m][3],
                     afternoon: response5.values[m][4],
-                    photo: require("../assets/PhotosAnims/SAMIR.jpg")
+                    photo: require("../assets/PhotosAnims/samir.jpg")
                 });
             };
 
@@ -163,7 +163,7 @@ export default function FetchActivities(props) {
                     anim: response6.values[n][2],
                     morning: response6.values[n][3],
                     afternoon: response6.values[n][4],
-                    photo: require("../assets/PhotosAnims/CHRISTIAN.jpg")
+                    photo: require("../assets/PhotosAnims/christian.jpg")
                 });
             };
 
@@ -174,7 +174,7 @@ export default function FetchActivities(props) {
                     anim: response7.values[o][2],
                     morning: response7.values[o][3],
                     afternoon: response7.values[o][4],
-                    photo: require("../assets/PhotosAnims/MAEVA.jpeg")
+                    photo: require("../assets/PhotosAnims/maeva.jpeg")
                 });
             };
 
@@ -185,7 +185,7 @@ export default function FetchActivities(props) {
                     anim: response8.values[p][2],
                     morning: response8.values[p][3],
                     afternoon: response8.values[p][4],
-                    photo: require("../assets/PhotosAnims/CANDICE.jpg")
+                    photo: require("../assets/PhotosAnims/candice.jpg")
                 });
             };
 
@@ -196,7 +196,7 @@ export default function FetchActivities(props) {
                     anim: response9.values[q][2],
                     morning: response9.values[q][3],
                     afternoon: response9.values[q][4],
-                    photo: require("../assets/PhotosAnims/DIRECTION1.jpg")
+                    photo: require("../assets/PhotosAnims/direction1.jpg")
                 });
             };
 
@@ -207,7 +207,7 @@ export default function FetchActivities(props) {
                     anim: response10.values[r][2],
                     morning: response10.values[r][3],
                     afternoon: response10.values[r][4],
-                    photo: require("../assets/PhotosAnims/RUDY.jpg")
+                    photo: require("../assets/PhotosAnims/rudy.jpg")
                 });
             };
 
@@ -218,7 +218,7 @@ export default function FetchActivities(props) {
                     anim: response11.values[s][2],
                     morning: response11.values[s][3],
                     afternoon: response11.values[s][4],
-                    photo: require("../assets/PhotosAnims/DIRECTION2.png")
+                    photo: require("../assets/PhotosAnims/direction2.png")
                 });
             };
 
@@ -229,7 +229,7 @@ export default function FetchActivities(props) {
                     anim: response12.values[t][2],
                     morning: response12.values[t][3],
                     afternoon: response12.values[t][4],
-                    photo: require("../assets/PhotosAnims/BASTIEN.jpg")
+                    photo: require("../assets/PhotosAnims/bastien.jpg")
                 });
             };
 
@@ -240,7 +240,7 @@ export default function FetchActivities(props) {
                     anim: response13.values[u][2],
                     morning: response13.values[u][3],
                     afternoon: response13.values[u][4],
-                    photo: require("../assets/PhotosAnims/VANESSA.jpg")
+                    photo: require("../assets/PhotosAnims/vanessa.jpg")
                 });
             };
             setLoading(false);
@@ -257,14 +257,18 @@ export default function FetchActivities(props) {
     let filter
     let filteredList
 
-    if (animGroupChoice === null || (animGroupChoice.toLowerCase() === "tous")) {
+    if ((animGroupChoice === null || animGroupChoice.toLowerCase() === "tous") && (dateChoice === null)) {
         let date = new Date()
         if (date < new Date("2022-07-11")) {
             date = new Date("2022-07-11")
         }
         let todayDate = moment(date).format("DD/MM/YYYY")
         filter = actiList.filter(acti => acti.date === todayDate)
-    } else if (dateChoice === null) {
+
+    } else if ((animGroupChoice === null || animGroupChoice.toLowerCase() === "tous") && (dateChoice !== null)) {
+        filter = actiList.filter(acti => acti.date === dateChoice)
+
+    } else if ((dateChoice === null) && (animGroupChoice !== null)) {
         let date = new Date()
         if (date < new Date("2022-07-11")) {
             date = new Date("2022-07-11")
@@ -280,7 +284,7 @@ export default function FetchActivities(props) {
 
     filteredList = filter.map((e, i) => (
         <ListItem key={i} bottomDivider >
-            <Avatar style={styles.avatar} source={e.photo} />
+            <Avatar rounded style={styles.avatar} source={e.photo} />
             <ListItem.Content >
                 <ListItem.Title style={{ color: "blue" }}>Matin: {e.morning}</ListItem.Title>
                 <ListItem.Title style={{ color: "green" }}>Aprem: {e.afternoon}</ListItem.Title>
@@ -300,7 +304,7 @@ export default function FetchActivities(props) {
             <View style={styles.container}>
                 <View style={{ alignItems: "center" }}>
                     <DatesDropdown dateSelectedParent={dateSelected} />
-                    <AnimAndGroupDropdown animOrGroupSelectedParent={animOrGroupSelected} />
+                    <AllAndGroupDropdown animOrGroupSelectedParent={animOrGroupSelected} />
                 </View>
                 <ScrollView>
                     {filteredList}
@@ -328,7 +332,7 @@ const styles = StyleSheet.create({
     avatar: {
         width: 50,
         height: 50,
-        borderRadius: 100,
+
     }
 });
 

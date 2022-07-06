@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Text, View } from "react-native";
 import { Overlay } from "react-native-elements";
 import { connect } from 'react-redux';
@@ -23,7 +23,7 @@ function BirthdayOverlay(props) {
 }
 
 function mapStateToProps(state) {
-    return { visible: state.birthdayOverlayReducer.visible, date: state.birthdayOverlayReducer.date };
+    return { visible: state.OverlayReducer.visible, date: state.OverlayReducer.date };
 }
 
 

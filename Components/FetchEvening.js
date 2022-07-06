@@ -99,7 +99,7 @@ export default function FetchEvening(props) {
 
     filteredList = filter.map((e, i) => (
         <ListItem key={i} bottomDivider >
-            <Avatar style={styles.avatar} source={e.photo} />
+            <Avatar rounded style={styles.avatar} source={e.photo} />
             <ListItem.Content >
                 <ListItem.Title style={{ color: "blue" }}>{e.veillee}</ListItem.Title>
             </ListItem.Content>

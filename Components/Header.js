@@ -7,7 +7,7 @@ import { useFonts, DancingScript_400Regular } from '@expo-google-fonts/dancing-s
 
 
 export default function Header(props) {
-    let imageSource = require("../assets/PhotosAnims/MAEVA.jpeg");
+    let imageSource = require("../assets/PhotosAnims/romain.jpeg");
 
     let [fontsLoaded] = useFonts({
         DancingScript_400Regular
@@ -26,16 +26,14 @@ export default function Header(props) {
                     <View style={styles.textContainer}>
                         <Text style={styles.title}>{props.title}</Text>
                     </View>
-                    {/* <TouchableOpacity onPress={() => {
-                        console.log("Nique ta mère")
-                        // props.navigation.navigate('BottomTab', { screen: "Home" })
-
-                    }}> */}
-                    <Image
-                        source={imageSource}
-                        style={styles.image}
-                    />
-                    {/* </TouchableOpacity> */}
+                    <TouchableOpacity onPress={() => {
+                        console.log("clicked");
+                    }}>
+                        <Image
+                            source={imageSource}
+                            style={styles.image}
+                        />
+                    </TouchableOpacity>
                 </View>
             </View>
         );

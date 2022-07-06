@@ -6,10 +6,7 @@ import { connect } from 'react-redux';
 
 import BedroomDropdown from './BedroomDropdown';
 import AnimDropdown from './AnimDropdown';
-import BirthdayOverlay from './birthdayOverlay';
-
-
-
+import BirthdayOverlay from './BirthdayOverlay';
 
 
 function FetchLists(props) {
@@ -129,7 +126,7 @@ function FetchLists(props) {
             <View style={styles.container}>
                 <BirthdayOverlay />
                 {props.group === "bedrooms" && (
-                    <View style={{ alignItems: "center", marginLeft: 10 }}>
+                    <View style={{ alignItems: "center" }}>
                         <BedroomDropdown bedroomSelectedParent={bedroomSelected} />
                     </View>
                 )}

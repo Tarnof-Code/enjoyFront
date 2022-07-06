@@ -3,12 +3,11 @@ import { StyleSheet, View } from 'react-native';
 import DropDownPicker from "react-native-dropdown-picker";
 
 
-export default function AnimAndGroupDropdown(props) {
+export default function AllAndGroupDropdown(props) {
 
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
     const [labels, setLabels] = useState([
-        { label: "Tous", value: "Tous" },
         { label: "Crabes", value: "Crabes" },
         { label: "Requins", value: "Requins" },
         { label: "Poulpes", value: "Poulpes" },
@@ -30,7 +29,7 @@ export default function AnimAndGroupDropdown(props) {
                 placeholder="Quel groupe ?"
                 placeholderStyle={{ color: "#576574", fontStyle: "italic" }}
                 onChangeValue={(value) => {
-                    props.animOrGroupSelectedParent(value);
+                    props.groupSelectedParent(value);
                 }}
             />
         </View>
@@ -43,7 +42,7 @@ export default function AnimAndGroupDropdown(props) {
 const styles = StyleSheet.create({
     dropDownPicker: {
         width: "95%",
-        // marginTop: 6,
+        marginTop: 6,
         marginBottom: 6,
         zIndex: -1,
         borderRadius: 8,

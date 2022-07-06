@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 
 function Home(props) {
 
-    const [imageSource, setImageSource] = useState(require("../../assets/PhotosAnims/EMY.jpg"))
+    const [imageSource, setImageSource] = useState(require("../../assets/PhotosAnims/emy.jpg"))
 
     let [fontsLoaded] = useFonts({
         DancingScript_400Regular,
