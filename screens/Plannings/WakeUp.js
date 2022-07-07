@@ -3,6 +3,8 @@ import { ListItem, Avatar } from 'react-native-elements'
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
+import { useFonts, DancingScript_400Regular } from '@expo-google-fonts/dancing-script';
+
 import moment from 'moment'
 import 'moment/locale/fr'  // without this line it didn't work
 moment.locale('fr')
@@ -14,6 +16,10 @@ export default function Surveillance(props) {
     const [wakeUpList, setWakeUpList] = useState([]);
     const [loading, setLoading] = useState(true);
     const [dateChoice, setDateChoice] = useState(null);
+
+    let [fontsLoaded] = useFonts({
+        DancingScript_400Regular,
+    });
 
     var dateSelected = (dateSelect) => {
         setDateChoice(dateSelect);
@@ -101,7 +107,7 @@ export default function Surveillance(props) {
         </ListItem>
     ))
 
-    if (loading) {
+    if (loading || !fontsLoaded) {
         return (
             <View style={styles.loadingBox}>
                 <Text style={styles.loadingText}>Attends... Ça charge !</Text>
@@ -152,8 +158,9 @@ const styles = StyleSheet.create({
     },
     hour: {
         color: "red",
-        fontSize: 20,
-        fontWeight: "bold"
+        fontSize: 25,
+        // fontWeight: "bold",
+        fontFamily: "DancingScript_400Regular",
     },
     card: {
         borderRadius: 30,
@@ -161,8 +168,8 @@ const styles = StyleSheet.create({
         width: "100%",
         paddingTop: 5,
         paddingBottom: 12,
-        marginBottom: 19,
-        // marginTop: 10
+        marginBottom: 12,
+
     },
 });
 

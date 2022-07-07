@@ -140,9 +140,9 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         alignItems: "center",
         width: "100%",
-        paddingTop: 5,
-        paddingBottom: 30,
-        marginBottom: 10,
+        height: "65%",
+        paddingTop: 30,
+        //  marginBottom: 10,
         marginTop: 40
     }
 
