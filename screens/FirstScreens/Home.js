@@ -15,7 +15,6 @@ function Home(props) {
 
     const [imageSource, setImageSource] = useState("")
 
-    console.log(props.animName)
     useEffect(() => {
 
         let temp = require("../../assets/PhotosAnims/inconnu.jpg")
