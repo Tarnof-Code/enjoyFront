@@ -72,7 +72,7 @@ export default function Holidays(props) {
 
 
     filteredList = list.map((e, i) => (
-        <ListItem key={i} bottomDivider >
+        <ListItem key={i}  >
             <Avatar
                 rounded
                 source={e.imageSrc}

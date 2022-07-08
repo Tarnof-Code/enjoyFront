@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ListItem, Button, Overlay, Badge, CheckBox } from 'react-native-elements'
+import { ListItem, Button, Overlay, Badge } from 'react-native-elements'
 import { StyleSheet, Text, View, ScrollView, Linking } from 'react-native';
 
 import { useFonts, DancingScript_400Regular } from '@expo-google-fonts/dancing-script';
@@ -41,7 +41,7 @@ export default function FetchTrips(props) {
             let response1 = await brutResponse1.json();
 
             let brutResponse2 = await fetch(
-                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Sorties!B8:I13?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
+                "https://sheets.googleapis.com/v4/spreadsheets/1dAhxW5yE38KIV21JkKbWCXqO70QzUZKJhANNESywXsc/values/Sorties!B8:J13?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
             );
             let response2 = await brutResponse2.json();
 
@@ -107,7 +107,7 @@ export default function FetchTrips(props) {
 
 
     filteredList = filter.map((e, i) => (
-        <ListItem key={i} bottomDivider >
+        <ListItem key={i}  >
             <ListItem.Content style={styles.listStyle}>
                 <View>
                     <ListItem.Title style={styles.dateStyle}>{e.date}</ListItem.Title>
@@ -198,6 +198,7 @@ export default function FetchTrips(props) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: "#FFFFFF"
 
     },
 

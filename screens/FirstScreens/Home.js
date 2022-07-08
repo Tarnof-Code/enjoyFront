@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 
 import { useFonts, DancingScript_400Regular } from '@expo-google-fonts/dancing-script';
 import { Roboto_400Regular } from '@expo-google-fonts/roboto';
@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 
 function Home(props) {
 
-    const [imageSource, setImageSource] = useState(require("../../assets/PhotosAnims/emy.jpg"))
+    const [imageSource, setImageSource] = useState(require("../../assets/PhotosAnims/tarnof.jpg"))
 
     let [fontsLoaded] = useFonts({
         DancingScript_400Regular,
@@ -44,7 +44,9 @@ function Home(props) {
                 <View style={{ alignItems: "center", marginTop: 25 }}>
                     <View style={styles.reportBox}>
                         <Text style={styles.reportTitle}>
-                            Compte rendu réunion
+                            Bonjour à tous !
+                            Vous trouverez ici les informations importantes de la journée !!
+                            Enjoy !
                         </Text>
                     </View>
                 </View>
@@ -101,6 +103,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#ffffff",
         width: "80%",
         alignItems: "center",
+        padding: 20,
         borderRadius: 40,
     },
     reportTitle: {

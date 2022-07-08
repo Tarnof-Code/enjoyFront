@@ -7,7 +7,7 @@ import { useFonts, DancingScript_400Regular } from '@expo-google-fonts/dancing-s
 
 
 export default function Header(props) {
-    let imageSource = require("../assets/PhotosAnims/romain.jpeg");
+    let imageSource = require("../assets/PhotosAnims/derrien.jpg");
 
     let [fontsLoaded] = useFonts({
         DancingScript_400Regular
