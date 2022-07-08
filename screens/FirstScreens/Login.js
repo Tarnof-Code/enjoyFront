@@ -44,7 +44,7 @@ function Login(props) {
                         />
                     </View>
 
-                    <View style={styles.inputContainer}>
+                    {/* <View style={styles.inputContainer}>
                         <Icon
                             name={passwordVisible ? "eye-off" : "eye"}
                             color="#121851"
@@ -73,7 +73,7 @@ function Login(props) {
                             }}
                         />
                         <Text style={styles.textCheckbox}>Se souvenir de moi</Text>
-                    </View>
+                    </View> */}
 
                     <View style={{ alignItems: "center" }}>
                         <Button

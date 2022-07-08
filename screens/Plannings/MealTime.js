@@ -155,6 +155,7 @@ export default function FetchMeals(props) {
                     }}
                 ></Button>
                 <ScrollView>
+                    <View style={{ marginTop: 40 }}></View>
                     <View style={styles.titleBox}>
                         <Text style={styles.title}>Ptit Dej</Text>
                     </View>
