@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { ListItem } from 'react-native-elements'
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 
 import { useFonts, DancingScript_400Regular } from '@expo-google-fonts/dancing-script';
@@ -14,6 +15,28 @@ import { connect } from 'react-redux';
 function Home(props) {
 
     const [imageSource, setImageSource] = useState("")
+    const [infos, setInfos] = useState(false);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function getInfos() {
+            let brutResponse = await fetch(
+                "https://sheets.googleapis.com/v4/spreadsheets/189xQ1QyXNOwcx5Wua_UZOJiM8i71N8GBO4IWSQSIHbE/values/Infos!A1:A20?dateTimeRenderOption=FORMATTED_STRING&majorDimension=ROWS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y "
+            );
+            let response = await brutResponse.json();
+
+            let temp = [];
+
+            for (let i = 0; i < response.values.length; i++) {
+                temp.push({
+                    msg: response.values[i][0]
+                });
+            };
+            setLoading(false);
+            setInfos(temp);
+        }
+        getInfos();
+    }, []);
 
     useEffect(() => {
 
@@ -59,10 +82,22 @@ function Home(props) {
 
     let date = new Date()
     let todayDate = moment(date).format("dddd DD MMM YYYY")
+    console.log(infos)
 
+    let mapInfos
+    mapInfos = infos.map((item, index) => {
+        return (
+            <Text style={styles.text}>➤ {item.msg}</Text>
+        )
+    }
+    )
 
-    if (!fontsLoaded) {
-        return null;
+    if (!fontsLoaded || loading) {
+        return (
+            <View style={styles.loadingBox}>
+                <Text style={styles.loadingText}>Attends... Ça charge !</Text>
+            </View>
+        )
     } else {
         return (
             <View style={styles.container}>
@@ -78,11 +113,9 @@ function Home(props) {
                 </Text>
                 <View style={{ alignItems: "center", marginTop: 25 }}>
                     <View style={styles.reportBox}>
-                        <Text style={styles.reportTitle}>
-                            Bonjour à tous !
-                            Vous trouverez ici les informations importantes de la journée !!
-                            Enjoy !
-                        </Text>
+                        <ScrollView >
+                            {mapInfos}
+                        </ScrollView>
                     </View>
                 </View>
 
@@ -135,17 +168,26 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: "black",
         minHeight: "55%",
+        maxHeight: "77%",
         backgroundColor: "#ffffff",
         width: "80%",
         alignItems: "center",
         padding: 20,
         borderRadius: 40,
     },
-    reportTitle: {
-        marginTop: 10,
+    loadingText: {
+        fontStyle: 'italic',
         fontSize: 20,
-        fontWeight: "300"
-
+        fontWeight: '400',
+    },
+    loadingBox: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    text: {
+        margin: 5,
+        fontSize: 18,
     }
 });
 
