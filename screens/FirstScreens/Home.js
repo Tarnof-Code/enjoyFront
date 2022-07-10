@@ -32,46 +32,46 @@ function Home(props) {
                     msg: response.values[i][0]
                 });
             };
-            setLoading(false);
+
             setInfos(temp);
-        }
+
+        };
         getInfos();
-    }, []);
 
-    useEffect(() => {
-
-        let temp = require("../../assets/PhotosAnims/inconnu.jpg")
+        let img = require("../../assets/PhotosAnims/inconnu.jpg")
 
         if (props.animName == "CANDICE") {
-            temp = require("../../assets/PhotosAnims/candice.jpg")
+            img = require("../../assets/PhotosAnims/candice.jpg")
         } else if (props.animName == "BASTIEN") {
-            temp = require("../../assets/PhotosAnims/bastien.jpg")
+            img = require("../../assets/PhotosAnims/bastien.jpg")
         } else if (props.animName == "CHRISTIAN") {
-            temp = require("../../assets/PhotosAnims/christian.jpg")
+            img = require("../../assets/PhotosAnims/christian.jpg")
         } else if (props.animName == "DERRIEN") {
-            temp = require("../../assets/PhotosAnims/derrien.jpg")
+            img = require("../../assets/PhotosAnims/derrien.jpg")
         } else if (props.animName == "EMY") {
-            temp = require("../../assets/PhotosAnims/emy.jpeg")
+            img = require("../../assets/PhotosAnims/emy.jpeg")
         } else if (props.animName == "KHOUDEYI") {
-            temp = require("../../assets/PhotosAnims/khoudeyi.jpeg")
+            img = require("../../assets/PhotosAnims/khoudeyi.jpeg")
         } else if (props.animName == "MAËVA") {
-            temp = require("../../assets/PhotosAnims/maeva.jpeg")
+            img = require("../../assets/PhotosAnims/maeva.jpeg")
         } else if (props.animName == "NICOLAS") {
-            temp = require("../../assets/PhotosAnims/nicolas.jpg")
+            img = require("../../assets/PhotosAnims/nicolas.jpg")
         } else if (props.animName == "ROMAIN") {
-            temp = require("../../assets/PhotosAnims/romain.jpeg")
+            img = require("../../assets/PhotosAnims/romain.jpeg")
         } else if (props.animName == "RUDY") {
-            temp = require("../../assets/PhotosAnims/rudy.jpg")
+            img = require("../../assets/PhotosAnims/rudy.jpg")
         } else if (props.animName == "SAMIR") {
-            temp = require("../../assets/PhotosAnims/samir.jpg")
+            img = require("../../assets/PhotosAnims/samir.jpg")
         } else if (props.animName == "VANESSA") {
-            temp = require("../../assets/PhotosAnims/vanessa.jpg")
+            img = require("../../assets/PhotosAnims/vanessa.jpg")
         } else if (props.animName == "TARNOF") {
-            temp = require("../../assets/PhotosAnims/tarnof.jpg")
+            img = require("../../assets/PhotosAnims/tarnof.jpg")
         }
+        setLoading(false);
+        setImageSource(img)
+    }, []);
 
-        setImageSource(temp)
-    }, [])
+
 
     let [fontsLoaded] = useFonts({
         DancingScript_400Regular,
@@ -82,17 +82,26 @@ function Home(props) {
 
     let date = new Date()
     let todayDate = moment(date).format("dddd DD MMM YYYY")
+
     console.log(infos)
 
     let mapInfos
-    mapInfos = infos.map((item, index) => {
-        return (
-            <Text style={styles.text}>➤ {item.msg}</Text>
+
+    if (infos === false) {
+        mapInfos = <Text>Loading...</Text>
+    } else {
+        mapInfos = infos.map((item, index) => {
+            return (
+                <Text key={index} style={styles.text}>➤ {item.msg}</Text>
+            )
+        }
         )
     }
-    )
 
-    if (!fontsLoaded || loading) {
+
+
+
+    if (loading || !fontsLoaded) {
         return (
             <View style={styles.loadingBox}>
                 <Text style={styles.loadingText}>Attends... Ça charge !</Text>
