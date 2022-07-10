@@ -90,8 +90,9 @@ function TopTab() {
                 options={{
                     title: ({ focused }) => (
                         <MaterialCommunityIcons
-                            size={25}
+                            // size={25}
                             // name="face-man-shimmer-outline"
+                            size={30}
                             name="train-car"
                             color={focused ? '#000000' : '#b2bec3'}
                         />
