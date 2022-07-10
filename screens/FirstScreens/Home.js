@@ -28,7 +28,7 @@ function Home(props) {
         } else if (props.animName == "DERRIEN") {
             temp = require("../../assets/PhotosAnims/derrien.jpg")
         } else if (props.animName == "EMY") {
-            temp = require("../../assets/PhotosAnims/emy.jpg")
+            temp = require("../../assets/PhotosAnims/emy.jpeg")
         } else if (props.animName == "KHOUDEYI") {
             temp = require("../../assets/PhotosAnims/khoudeyi.jpeg")
         } else if (props.animName == "MAËVA") {
@@ -43,6 +43,8 @@ function Home(props) {
             temp = require("../../assets/PhotosAnims/samir.jpg")
         } else if (props.animName == "VANESSA") {
             temp = require("../../assets/PhotosAnims/vanessa.jpg")
+        } else if (props.animName == "TARNOF") {
+            temp = require("../../assets/PhotosAnims/tarnof.jpg")
         }
 
         setImageSource(temp)

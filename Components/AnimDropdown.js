@@ -8,17 +8,17 @@ export default function AnimDropdown(props) {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
     const [labels, setLabels] = useState([
-        { label: "Bastien", value: "Bastien" },
-        { label: "Candice", value: "Candice" },
-        { label: "Christian", value: "Christian" },
-        { label: "Emy", value: "Emy" },
-        { label: "Khoudeyi", value: "Khoudeyi" },
-        { label: "Maëva", value: "Maëva" },
-        { label: "Nicolas", value: "Nicolas" },
-        { label: "Romain", value: "Romain" },
-        { label: "Rudy", value: "Rudy" },
-        { label: "Samir", value: "Samir" },
-        { label: "Vanessa", value: "Vanessa" },
+        { label: "Bastien           Car 2 / Voiture 7", value: "Bastien" },
+        { label: "Candice           Car 2 / Voiture 7", value: "Candice" },
+        { label: "Christian         Car 1 / Voiture 6", value: "Christian" },
+        { label: "Emy               Car 1 / Voiture 6", value: "Emy" },
+        { label: "Khoudeyi          Car 2 / Voiture 7", value: "Khoudeyi" },
+        { label: "Maëva             Car 2 / Voiture 6", value: "Maëva" },
+        { label: "Nicolas           Car 1 / Voiture 6", value: "Nicolas" },
+        { label: "Romain            Car 1 / Voiture 6", value: "Romain" },
+        { label: "Rudy              Car 2 / Voiture 7", value: "Rudy" },
+        { label: "Samir             Car 1 / voiture 6", value: "Samir" },
+        { label: "Vanessa           Car 1 / Voiture 6", value: "Vanessa" },
     ]);
 
 

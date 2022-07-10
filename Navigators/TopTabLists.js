@@ -91,7 +91,8 @@ function TopTab() {
                     title: ({ focused }) => (
                         <MaterialCommunityIcons
                             size={25}
-                            name="face-man-shimmer-outline"
+                            // name="face-man-shimmer-outline"
+                            name="train-car"
                             color={focused ? '#000000' : '#b2bec3'}
                         />
                     )
