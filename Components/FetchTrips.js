@@ -9,6 +9,7 @@ import 'moment/locale/fr'  // without this line it didn't work
 moment.locale('fr')
 
 import GroupDropdown from './GroupDropdown';
+import DropdownGroup from './DropdownGroup';
 import CheckList from './CheckList';
 
 export default function FetchTrips(props) {
@@ -117,7 +118,7 @@ export default function FetchTrips(props) {
                     type="solid"
                     buttonStyle={styles.button}
                     title="Détails"
-                    titleStyle={{ fontSize: 13 }}
+                    titleStyle={{ fontSize: 10 }}
                     onPress={() => {
                         setIsVisible(true);
                         setDate(e.date);
@@ -178,9 +179,9 @@ export default function FetchTrips(props) {
                     </View>
                 </Overlay>
 
-                <View style={{ alignItems: "center" }}>
-                    <GroupDropdown groupSelectedParent={groupSelected} />
-                </View>
+
+                <DropdownGroup groupSelectedParent={groupSelected} />
+
                 <Badge
                     value="CheckList"
                     badgeStyle={styles.badge}

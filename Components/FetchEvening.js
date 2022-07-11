@@ -6,7 +6,8 @@ import moment from 'moment'
 import 'moment/locale/fr'  // without this line it didn't work
 moment.locale('fr')
 
-import DatesDropdown from './DatesDropdown';
+
+import DropdownDates from "./DropdownDates";
 
 export default function FetchEvening(props) {
 
@@ -116,9 +117,9 @@ export default function FetchEvening(props) {
 
         return (
             <View style={styles.container}>
-                <View style={{ alignItems: "center" }}>
-                    <DatesDropdown dateSelectedParent={dateSelected} />
-                </View>
+
+                <DropdownDates dateSelectedParent={dateSelected} />
+
                 <ScrollView>
                     {filteredList}
                 </ScrollView>

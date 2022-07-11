@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { ListItem } from 'react-native-elements'
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 
 import { useFonts, DancingScript_400Regular } from '@expo-google-fonts/dancing-script';
 import { Roboto_400Regular } from '@expo-google-fonts/roboto';
+
+// import DropdownDates from "../../Components/DropdownDates"
 
 import moment from 'moment'
 import 'moment/locale/fr'  // without this line it didn't work
@@ -83,8 +84,6 @@ function Home(props) {
     let date = new Date()
     let todayDate = moment(date).format("dddd DD MMM YYYY")
 
-    console.log(infos)
-
     let mapInfos
 
     if (infos === false) {
@@ -117,6 +116,7 @@ function Home(props) {
                     <Image source={imageSource} style={styles.image} />
                     <Text style={styles.welcomeMsg}>Salut {props.animName} !</Text>
                 </View>
+                {/* <DropdownDates /> */}
                 <Text style={styles.date}>
                     {todayDate}
                 </Text>

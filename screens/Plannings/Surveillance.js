@@ -7,7 +7,8 @@ import moment from 'moment'
 import 'moment/locale/fr'  // without this line it didn't work
 moment.locale('fr')
 
-import DatesDropdown from '../../Components/DatesDropdown';
+
+import DropdownDates from '../../Components/DropdownDates';
 
 export default function Surveillance(props) {
 
@@ -97,9 +98,9 @@ export default function Surveillance(props) {
 
         return (
             <View style={styles.container}>
-                <View style={{ alignItems: "center" }}>
-                    <DatesDropdown dateSelectedParent={dateSelected} />
-                </View>
+
+                <DropdownDates dateSelectedParent={dateSelected} />
+
                 <View>
                     {filteredList}
                 </View>

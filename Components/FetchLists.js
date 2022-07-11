@@ -5,7 +5,9 @@ import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 
 import BedroomDropdown from './BedroomDropdown';
+import DropdownBedroom from './DropdownBedroom';
 import AnimDropdown from './AnimDropdown';
+import DropdownAnim from './DropdownAnim';
 import BirthdayOverlay from './BirthdayOverlay';
 
 
@@ -126,14 +128,12 @@ function FetchLists(props) {
             <View style={styles.container}>
                 <BirthdayOverlay />
                 {props.group === "bedrooms" && (
-                    <View style={{ alignItems: "center" }}>
-                        <BedroomDropdown bedroomSelectedParent={bedroomSelected} />
-                    </View>
+
+                    <DropdownBedroom bedroomSelectedParent={bedroomSelected} />
+
                 )}
                 {props.group === "animators" && (
-                    <View style={{ alignItems: "center" }}>
-                        <AnimDropdown animSelectedParent={animSelected} />
-                    </View>
+                    <DropdownAnim animSelectedParent={animSelected} />
                 )}
                 <ScrollView>
                     {filteredList}
@@ -145,6 +145,7 @@ function FetchLists(props) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#fff',
 
     },
     room: {

@@ -8,7 +8,8 @@ moment.locale('fr')
 
 
 import AllAndGroupDropdown from './AllAndGroupDropdown';
-import DatesDropdown from './DatesDropdown';
+import DropdownAllGroup from './DropdownAllGroup';
+import DropdownDates from './DropdownDates';
 
 
 export default function FetchActivities(props) {
@@ -302,10 +303,10 @@ export default function FetchActivities(props) {
 
         return (
             <View style={styles.container}>
-                <View style={{ alignItems: "center" }}>
-                    <DatesDropdown dateSelectedParent={dateSelected} />
-                    <AllAndGroupDropdown animOrGroupSelectedParent={animOrGroupSelected} />
-                </View>
+
+                <DropdownDates dateSelectedParent={dateSelected} />
+                <DropdownAllGroup animOrGroupSelectedParent={animOrGroupSelected} />
+
                 <ScrollView>
                     {filteredList}
                 </ScrollView>
