@@ -84,7 +84,7 @@ function TopTab() {
                 }}
             />
 
-            <Tab.Screen
+            {/* <Tab.Screen
                 name="Animators"
                 component={Animators}
                 options={{
@@ -98,7 +98,7 @@ function TopTab() {
                         />
                     )
                 }}
-            />
+            /> */}
 
             <Tab.Screen
                 name="Bedrooms"

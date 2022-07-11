@@ -143,10 +143,10 @@ export default function FetchMeals(props) {
 
         return (
             <View style={styles.container}>
-                {/* <View style={{ alignItems: "center" }}> */}
+
                 <DropdownDates dateSelectedParent={dateSelected} />
-                {/* </View> */}
-                <Button
+
+                {/* <Button
                     type="solid"
                     buttonStyle={styles.button}
                     title="Menus"
@@ -154,7 +154,7 @@ export default function FetchMeals(props) {
                     onPress={() => {
 
                     }}
-                ></Button>
+                ></Button> */}
                 <ScrollView>
                     <View style={{ marginTop: 20 }}></View>
                     <View style={styles.titleBox}>
