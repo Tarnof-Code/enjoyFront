@@ -91,8 +91,6 @@ export default function GeneralHealth(props) {
     let filter
     let filteredData
 
-    console.log(data)
-
     if ((animGroupChoice === null) || (animGroupChoice.toLowerCase() === "tous")) {
         filter = data.filter(child => child.general !== "")
     } else if ((animGroupChoice !== null) && (animGroupChoice.toLowerCase() === "crabes")) {
