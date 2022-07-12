@@ -164,7 +164,7 @@ export default function FetchActivities(props) {
                     anim: response6.values[n][2],
                     morning: response6.values[n][3],
                     afternoon: response6.values[n][4],
-                    photo: require("../assets/PhotosAnims/christian.jpg")
+                    photo: require("../assets/PhotosAnims/christian.jpeg")
                 });
             };
 

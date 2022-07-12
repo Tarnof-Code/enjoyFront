@@ -11,7 +11,7 @@ const data = [
     { label: "A4     CANDICE       ", value: "A4" },
     { label: "A5     MAËVA         ", value: "A5" },
     { label: "B1     SAMIR         ", value: "B1" },
-    { label: "B2     Christian     ", value: "B2" },
+    { label: "B2     CHRISTIAN    ", value: "B2" },
     { label: "B3     DELAIR        ", value: "B3" },
     { label: "B4     ROMAIN        ", value: "B4" },
     { label: "B5     BASTIEN       ", value: "B5" },

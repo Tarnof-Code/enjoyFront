@@ -46,7 +46,7 @@ function Home(props) {
         } else if (props.animName == "BASTIEN") {
             img = require("../../assets/PhotosAnims/bastien.jpg")
         } else if (props.animName == "CHRISTIAN") {
-            img = require("../../assets/PhotosAnims/christian.jpg")
+            img = require("../../assets/PhotosAnims/christian.jpeg")
         } else if (props.animName == "DERRIEN") {
             img = require("../../assets/PhotosAnims/derrien.jpg")
         } else if (props.animName == "EMY") {
