@@ -7,7 +7,7 @@ import 'moment/locale/fr'  // without this line it didn't work
 moment.locale('fr')
 
 
-import AllAndGroupDropdown from './AllAndGroupDropdown';
+
 import DropdownAllGroup from './DropdownAllGroup';
 import DropdownDates from './DropdownDates';
 
