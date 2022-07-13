@@ -4,10 +4,10 @@ import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
 import { connect } from 'react-redux';
 
-import BedroomDropdown from './BedroomDropdown';
+
 import DropdownBedroom from './DropdownBedroom';
-import AnimDropdown from './AnimDropdown';
 import DropdownAnim from './DropdownAnim';
+import DropdownAnimDirection from './DropdownAnimDirection';
 import BirthdayOverlay from './BirthdayOverlay';
 
 
@@ -133,7 +133,7 @@ function FetchLists(props) {
 
                 )}
                 {props.group === "animators" && (
-                    <DropdownAnim animSelectedParent={animSelected} />
+                    <DropdownAnimDirection animSelectedParent={animSelected} />
                 )}
                 <ScrollView>
                     {filteredList}

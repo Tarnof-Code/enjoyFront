@@ -7,6 +7,8 @@ import { Foundation } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
+
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -84,21 +86,26 @@ function TopTab() {
                 }}
             />
 
-            {/* <Tab.Screen
+            <Tab.Screen
                 name="Animators"
                 component={Animators}
                 options={{
                     title: ({ focused }) => (
-                        <MaterialCommunityIcons
+                        // <MaterialCommunityIcons
+                        //     size={25}
+                        //     name="face-man-shimmer-outline"
+                        //     // size={30}
+                        //     // name="train-car"
+                        //     color={focused ? '#000000' : '#b2bec3'}
+                        // />
+                        <MaterialIcons
                             size={25}
-                            name="face-man-shimmer-outline"
-                            // size={30}
-                            // name="train-car"
+                            name="sports-kabaddi"
                             color={focused ? '#000000' : '#b2bec3'}
                         />
                     )
                 }}
-            /> */}
+            />
 
             <Tab.Screen
                 name="Bedrooms"
