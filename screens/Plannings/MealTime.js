@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ListItem, Avatar, Button } from 'react-native-elements'
+import { ListItem, Avatar, Button, Overlay } from 'react-native-elements'
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
 import { useFonts, DancingScript_400Regular } from '@expo-google-fonts/dancing-script';
@@ -17,6 +17,8 @@ export default function FetchMeals(props) {
     const [planningMeals, setPlanningMeals] = useState([]);
     const [loading, setLoading] = useState(true);
     const [dateChoice, setDateChoice] = useState(null);
+    const [mealList, setMealList] = useState([]);
+    const [isVisible, setIsVisible] = useState(false);
 
     let [fontsLoaded] = useFonts({
         DancingScript_400Regular
@@ -34,8 +36,14 @@ export default function FetchMeals(props) {
             );
             let response = await brutResponse.json();
 
+            let brutMenus = await fetch(
+                "https://sheets.googleapis.com/v4/spreadsheets/1NFaehdydHLoy92kiAoCuak3oRqg5PKY4U4E2ujIQkNU/values/menus_BDD!A1:S12?dateTimeRenderOption=FORMATTED_STRING&majorDimension=COLUMNS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyBZXkEFqMLe991haSx1XOJcA3oqPaJlI-Y"
+            );
+            let menus = await brutMenus.json();
+
 
             let temp = [];
+            let menuList = [];
 
             for (let i = 0; i < response.values.length; i++) {
                 temp.push({
@@ -47,8 +55,6 @@ export default function FetchMeals(props) {
                     photo: require("../../assets/LogosGroupes/Crabe.jpg")
                 });
             };
-
-
 
             for (let i = 0; i < response.values.length; i++) {
                 temp.push({
@@ -72,11 +78,25 @@ export default function FetchMeals(props) {
                 });
             };
 
-
-
+            for (let i = 0; i < menus.values.length; i++) {
+                menuList.push({
+                    date: menus.values[i][0],
+                    lunch1: menus.values[i][1],
+                    lunch2: menus.values[i][2],
+                    lunch3: menus.values[i][3],
+                    lunch4: menus.values[i][4],
+                    lunch5: menus.values[i][5],
+                    dinner1: menus.values[i][7],
+                    dinner2: menus.values[i][8],
+                    dinner3: menus.values[i][9],
+                    dinner4: menus.values[i][10],
+                    dinner5: menus.values[i][11],
+                })
+            }
 
             setLoading(false);
             setPlanningMeals(temp);
+            setMealList(menuList);
         }
 
 
@@ -90,7 +110,9 @@ export default function FetchMeals(props) {
     let breakfast
     let lunch
     let diner
-
+    let filterMenu
+    let lunchMenu
+    let dinerMenu
 
 
     if (dateChoice === null) {
@@ -101,9 +123,13 @@ export default function FetchMeals(props) {
         let todayDate = moment(date).format("DD/MM/YYYY")
 
         filter = planningMeals.filter(meal => meal.date === todayDate)
+        filterMenu = mealList.filter(meal => meal.date === todayDate)
     } else {
         filter = planningMeals.filter(meal => meal.date === dateChoice)
+        filterMenu = mealList.filter(meal => meal.date === dateChoice)
     }
+
+    console.log(filterMenu)
 
 
     breakfast = filter.map((e, i) => (
@@ -133,6 +159,31 @@ export default function FetchMeals(props) {
         </ListItem>
     ));
 
+    lunchMenu = filterMenu.map((e, i) => (
+        <ListItem key={i} >
+            <ListItem.Content >
+                <ListItem.Title style={styles.detailsMenu}>{e.lunch1}</ListItem.Title>
+                <ListItem.Title style={styles.detailsMenu}>{e.lunch2}</ListItem.Title>
+                <ListItem.Title style={styles.detailsMenu}>{e.lunch3}</ListItem.Title>
+                <ListItem.Title style={styles.detailsMenu}>{e.lunch4}</ListItem.Title>
+                <ListItem.Title style={styles.detailsMenu}>{e.lunch5}</ListItem.Title>
+            </ListItem.Content>
+        </ListItem>
+    ));
+
+    dinerMenu = filterMenu.map((e, i) => (
+        <ListItem key={i}  >
+            <ListItem.Content >
+                <ListItem.Title style={styles.detailsMenu}>{e.dinner1}</ListItem.Title>
+                <ListItem.Title style={styles.detailsMenu}>{e.dinner2}</ListItem.Title>
+                <ListItem.Title style={styles.detailsMenu}>{e.dinner3}</ListItem.Title>
+                <ListItem.Title style={styles.detailsMenu}>{e.dinner4}</ListItem.Title>
+                <ListItem.Title style={styles.detailsMenu}>{e.dinner5}</ListItem.Title>
+            </ListItem.Content>
+        </ListItem>
+    ));
+
+
     if (loading || !fontsLoaded) {
         return (
             <View style={styles.loadingBox}>
@@ -143,18 +194,50 @@ export default function FetchMeals(props) {
 
         return (
             <View style={styles.container}>
+                <Overlay
+                    overlayStyle={{ flex: 0.3, width: "85%", minHeight: "85%", borderRadius: 50 }}
+                    width="5000"
+                    isVisible={isVisible}
+                    onBackdropPress={() => {
+                        setIsVisible(false);
+                    }}
+                >
+                    <ScrollView>
+                        <View style={{ alignItems: "center", justifyContent: "flex-start", flex: 1 }}>
+                            <Text style={styles.titleOver}>Menus</Text>
+                            <Text style={styles.subTitle}>Déjeûner</Text>
+                            <View style={styles.menuStyle}>
+                                {lunchMenu}
+                            </View>
+                            <Text style={styles.subTitle}>Dîner</Text>
+                            <View style={styles.menuStyle}>
+                                {dinerMenu}
+                            </View>
 
+                        </View>
+                    </ScrollView>
+                    <Button
+                        title="Retour"
+                        buttonStyle={styles.button}
+                        titleStyle={{ fontSize: 13 }}
+                        onPress={() => {
+                            setIsVisible(false)
+                        }}
+                    >
+                    </Button>
+                    <View style={{ marginTop: 10 }}></View>
+                </Overlay>
                 <DropdownDates dateSelectedParent={dateSelected} />
 
-                {/* <Button
+                <Button
                     type="solid"
                     buttonStyle={styles.button}
                     title="Menus"
                     titleStyle={{ fontSize: 13 }}
                     onPress={() => {
-
+                        setIsVisible(true)
                     }}
-                ></Button> */}
+                ></Button>
                 <ScrollView>
                     <View style={{ marginTop: 20 }}></View>
                     <View style={styles.titleBox}>
@@ -223,7 +306,28 @@ const styles = StyleSheet.create({
         height: 35,
         alignSelf: "center",
         marginVertical: 5,
+        marginTop: 20,
     },
+    titleOver: {
+        fontFamily: "DancingScript_400Regular",
+        fontSize: 35,
+        marginBottom: 20,
+    },
+    subTitle: {
+        fontSize: 20,
+        fontWeight: "semibold",
+        color: "blue",
+    },
+    menuStyle: {
+
+        width: "100%",
+    },
+    detailsMenu: {
+        fontSize: 22,
+        fontFamily: "DancingScript_400Regular",
+        alignSelf: "center"
+    }
+
 
 });
 

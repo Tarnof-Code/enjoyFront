@@ -137,7 +137,7 @@ function Home(props) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#ffffff"
+        backgroundColor: "#f1f2f6"
 
     },
     titleBox: {
@@ -148,6 +148,7 @@ const styles = StyleSheet.create({
     title: {
         fontFamily: "DancingScript_400Regular",
         fontSize: 40,
+        color: "#000000",
     },
     welcomeBox: {
         marginLeft: 30,
@@ -164,19 +165,21 @@ const styles = StyleSheet.create({
     welcomeMsg: {
         fontFamily: "Roboto_400Regular",
         fontSize: 20,
-        marginLeft: 20
+        marginLeft: 20,
+        color: "#000000",
     },
     date: {
         textAlign: "center",
         fontWeight: "900",
         fontSize: 18,
         marginTop: 20,
+        color: "#000000",
     },
     reportBox: {
         border: "solid ",
         borderWidth: 1,
         borderColor: "black",
-        minHeight: "55%",
+        minHeight: "70%",
         maxHeight: "77%",
         backgroundColor: "#ffffff",
         width: "80%",
@@ -195,7 +198,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     text: {
-        margin: 3,
+        marginVertical: 6,
         fontSize: 14,
     }
 });
