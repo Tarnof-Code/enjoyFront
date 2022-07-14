@@ -129,7 +129,7 @@ export default function FetchMeals(props) {
         filterMenu = mealList.filter(meal => meal.date === dateChoice)
     }
 
-    console.log(filterMenu)
+
 
 
     breakfast = filter.map((e, i) => (
@@ -315,7 +315,7 @@ const styles = StyleSheet.create({
     },
     subTitle: {
         fontSize: 20,
-        fontWeight: "semibold",
+        fontWeight: "600",
         color: "blue",
     },
     menuStyle: {
