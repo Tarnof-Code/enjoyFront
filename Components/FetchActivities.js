@@ -142,7 +142,7 @@ export default function FetchActivities(props) {
                     anim: response4.values[l][2],
                     morning: response4.values[l][3],
                     afternoon: response4.values[l][4],
-                    photo: require("../assets/PhotosAnims/emy.jpg")
+                    photo: require("../assets/PhotosAnims/emy.jpeg")
                 });
             };
 

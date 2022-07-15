@@ -25,7 +25,7 @@ function Header(props) {
         } else if (props.animName == "DERRIEN") {
             temp = require("../assets/PhotosAnims/derrien.jpg")
         } else if (props.animName == "EMY") {
-            temp = require("../assets/PhotosAnims/emy.jpg")
+            temp = require("../assets/PhotosAnims/emy.jpeg")
         } else if (props.animName == "KHOUDEYI") {
             temp = require("../assets/PhotosAnims/khoudeyi.jpeg")
         } else if (props.animName == "MAËVA") {
