@@ -25,7 +25,7 @@ export default function Holidays(props) {
                 if (response.values[i][0].toLowerCase() === "romain") {
                     image = require("../../assets/PhotosAnims/romain.jpeg");
                 } else if (response.values[i][0].toLowerCase() === "emy") {
-                    image = require("../../assets/PhotosAnims/emy.jpeg");
+                    image = require("../../assets/PhotosAnims/emy.jpg");
                 } else if (response.values[i][0].toLowerCase() === "maeva") {
                     image = require("../../assets/PhotosAnims/maeva.jpeg");
                 } else if (response.values[i][0].toLowerCase() === "khoudeyi") {

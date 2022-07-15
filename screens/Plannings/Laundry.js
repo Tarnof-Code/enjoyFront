@@ -54,7 +54,7 @@ export default function Laundry(props) {
     let batA
 
     batA = laundryList.map((e, i) => (
-        <ListItem key={i} style={{ marginTop: 20 }} >
+        <ListItem key={i} style={{ marginTop: 10 }} >
             <ListItem.Content >
                 <ListItem.Title style={styles.title}>{e.bat}</ListItem.Title>
                 <ListItem.Title style={styles.dates}>{e.date1}</ListItem.Title>
@@ -103,9 +103,13 @@ const styles = StyleSheet.create({
     },
     title: {
         alignSelf: "center",
+        fontFamily: "DancingScript_400Regular",
+        fontSize: 35,
+        marginBottom: 5,
     },
     dates: {
         alignSelf: "center",
+        color: "blue",
     }
 });
 
