@@ -8,7 +8,7 @@ const data = [
     // { label: "Lundi 11", value: "11/07/2022" },
     // { label: "Mardi 12", value: "12/07/2022" },
     // { label: "Mercredi 13", value: "13/07/2022" },
-    { label: "Jeudi 14", value: "14/07/2022" },
+    // { label: "Jeudi 14", value: "14/07/2022" },
     { label: "Vendredi 15", value: "15/07/2022" },
     { label: "Samedi 16", value: "16/07/2022" },
     { label: "Dimanche 17", value: "17/07/2022" },
@@ -73,7 +73,8 @@ export default DropdownDates;
 const styles = StyleSheet.create({
     container: {
         backgroundColor: 'white',
-        padding: 10,
+        paddingHorizontal: 10,
+        paddingTop: 10,
     },
     dropdown: {
         height: 50,
