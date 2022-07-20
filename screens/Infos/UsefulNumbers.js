@@ -27,7 +27,7 @@ export default function UsefulNumbers(props) {
         } else {
             Linking.openURL(`telprompt:${phone}`);
         }
-    }
+    };
 
     useEffect(() => {
         async function getData() {
