@@ -69,7 +69,7 @@ function TopTab() {
                 }}
             />
 
-            <Tab.Screen
+            {/* <Tab.Screen
                 name="WhatToDoIf"
                 component={WhatToDoIf}
                 options={{
@@ -81,7 +81,7 @@ function TopTab() {
                         />
                     )
                 }}
-            />
+            /> */}
 
 
 

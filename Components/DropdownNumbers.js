@@ -5,12 +5,12 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 
 const data = [
-    { label: "Crabes", value: "Crabes" },
-    { label: "Requins", value: "Requins" },
-    { label: "Poulpes", value: "Poulpes" },
+    { label: "Equipe", value: "Equipe" },
+    { label: "Administration", value: "Administration" },
+    { label: "Activités", value: "Activités" },
 ];
 
-const DropdownAnim = (props) => {
+const DropdownNumbers = (props) => {
     const [value, setValue] = useState(null);
     const [isFocus, setIsFocus] = useState(false);
 
@@ -29,7 +29,7 @@ const DropdownAnim = (props) => {
                 maxHeight={300}
                 labelField="label"
                 valueField="value"
-                placeholder={!isFocus ? "Quelle groupe ?" : '...'}
+                placeholder={!isFocus ? "Equipe" : '...'}
                 searchPlaceholder="Search..."
                 value={value}
                 onFocus={() => setIsFocus(true)}
@@ -37,7 +37,7 @@ const DropdownAnim = (props) => {
                 onChange={item => {
                     setValue(item.value);
                     setIsFocus(false);
-                    props.groupSelectedParent(item.value);
+                    props.numberSelectedParent(item.value);
                 }}
                 renderLeftIcon={() => (
                     <AntDesign
@@ -52,7 +52,7 @@ const DropdownAnim = (props) => {
     );
 };
 
-export default DropdownAnim;
+export default DropdownNumbers;
 
 const styles = StyleSheet.create({
     container: {
