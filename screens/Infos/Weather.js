@@ -40,9 +40,9 @@ export default function Weather(props) {
     }, []);
 
 
-    console.log(data[0].icon)
+    console.log(data)
 
-    if (loading || !fontsLoaded) {
+    if (loading || !fontsLoaded || data === null) {
         return (
             <View style={styles.loadingBox}>
                 <Text style={styles.loadingText}>Attends... Ça charge !</Text>
