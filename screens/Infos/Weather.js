@@ -29,7 +29,6 @@ export default function Weather(props) {
                     icon: "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png",
                     tMin: response.main.temp_min,
                     tMax: response.main.temp_max,
-                    tFeel: response.main.feels_like,
                 });
             };
 
@@ -60,6 +59,8 @@ export default function Weather(props) {
                     />
                     <Text style={styles.text}>{data[0].description}</Text>
                 </View>
+                <Text style={styles.tempMin}>Température Min : {data[0].tMin} °C</Text>
+                <Text style={styles.tempMax}>Température Max : {data[0].tMax} °C</Text>
             </View>
         );
     }
@@ -75,23 +76,40 @@ const styles = StyleSheet.create({
         fontFamily: "DancingScript_400Regular",
         fontSize: 40,
         marginTop: 20,
-        marginBottom: 20,
+        marginBottom: 60,
     },
     image: {
-        width: 90,
-        height: 90,
+        width: 60,
+        height: 60,
         backgroundColor: "#74b9ff",
-        borderRadius: 50,
+        borderRadius: 30,
     },
     description: {
         flexDirection: "row",
         alignItems: "flex-start",
         justifyContent: "flex-start",
+        marginBottom: 20,
     },
     text: {
         fontFamily: "DancingScript_400Regular",
-        fontSize: 40,
+        fontSize: 30,
         alignSelf: "center",
         marginLeft: 20,
-    }
+    },
+    tempMin: {
+        fontFamily: "DancingScript_400Regular",
+        fontSize: 25,
+        alignSelf: "center",
+        marginLeft: 20,
+        color: "blue",
+    },
+    tempMax: {
+        fontFamily: "DancingScript_400Regular",
+        fontSize: 25,
+        alignSelf: "center",
+        marginLeft: 20,
+        color: "red",
+    },
+
+
 });
