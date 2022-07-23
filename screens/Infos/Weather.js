@@ -39,7 +39,19 @@ export default function Weather(props) {
     }, []);
 
 
-    console.log(data)
+    let time = new Date().getHours();
+    console.log(time);
+    let timeOfDay;
+
+    if (time > 0 && time < 12) {
+        timeOfDay = "matin";
+    } else if (time >= 12 && timeOtimeDay < 18) {
+        timeOfDay = "après-midi";
+    } else if (time >= 18 && time < 24) {
+        timeOfDay = "soir";
+    }
+
+
 
     if (loading || !fontsLoaded || data === null) {
         return (
@@ -52,6 +64,7 @@ export default function Weather(props) {
         return (
             <View style={styles.container}>
                 <Text style={styles.title}>Météo du jour</Text>
+                <Text style={styles.timeOfDay}>{timeOfDay}</Text>
                 <View style={styles.description}>
                     <Image
                         source={{ uri: data[0].icon }}
@@ -74,15 +87,15 @@ const styles = StyleSheet.create({
     },
     title: {
         fontFamily: "DancingScript_400Regular",
-        fontSize: 40,
+        fontSize: 30,
         marginTop: 20,
-        marginBottom: 60,
+        marginBottom: 40,
     },
     image: {
         width: 60,
         height: 60,
-        backgroundColor: "#74b9ff",
-        borderRadius: 30,
+        // backgroundColor: "#74b9ff",
+        // borderRadius: 30,
     },
     description: {
         flexDirection: "row",
@@ -92,23 +105,27 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: "DancingScript_400Regular",
-        fontSize: 30,
+        fontSize: 25,
         alignSelf: "center",
         marginLeft: 20,
     },
     tempMin: {
         fontFamily: "DancingScript_400Regular",
-        fontSize: 25,
+        fontSize: 20,
         alignSelf: "center",
         marginLeft: 20,
         color: "blue",
     },
     tempMax: {
         fontFamily: "DancingScript_400Regular",
-        fontSize: 25,
+        fontSize: 20,
         alignSelf: "center",
         marginLeft: 20,
         color: "red",
+    },
+    timeOfDay: {
+        fontFamily: "DancingScript_400Regular",
+        fontSize: 30,
     },
 
 

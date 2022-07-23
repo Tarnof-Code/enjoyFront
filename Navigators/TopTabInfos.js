@@ -37,7 +37,7 @@ function TopTab() {
                 }}
             />
 
-            <Tab.Screen
+            {/* <Tab.Screen
                 name="Regulations"
                 component={Regulations}
                 options={{
@@ -49,7 +49,7 @@ function TopTab() {
                         />
                     )
                 }}
-            />
+            /> */}
 
             <Tab.Screen
                 name="Weather"
