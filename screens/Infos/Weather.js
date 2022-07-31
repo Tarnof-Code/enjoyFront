@@ -45,7 +45,7 @@ export default function Weather(props) {
 
     if (time > 0 && time < 12) {
         timeOfDay = "matin";
-    } else if (time >= 12 && timeOtimeDay < 18) {
+    } else if (time >= 12 && time < 18) {
         timeOfDay = "après-midi";
     } else if (time >= 18 && time < 24) {
         timeOfDay = "soir";

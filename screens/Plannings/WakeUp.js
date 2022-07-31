@@ -85,7 +85,7 @@ export default function Surveillance(props) {
                     colors={["#f7f1e3", '#dff9fb']}
                     style={styles.card}
                 >
-                    <ListItem.Title style={styles.hour}>7H45</ListItem.Title>
+                    <ListItem.Title style={styles.hour}>8H15</ListItem.Title>
                     <ListItem.Title style={styles.title}>Couloir A</ListItem.Title>
                     <ListItem.Subtitle style={styles.subTitle}>{e.couloirA}</ListItem.Subtitle>
                     <ListItem.Title style={styles.title}>Couloir B / Rdc</ListItem.Title>
@@ -98,7 +98,7 @@ export default function Surveillance(props) {
                     colors={["#f7f1e3", '#ffcccc']}
                     style={styles.card}
                 >
-                    <ListItem.Title style={styles.hour}>8H00</ListItem.Title>
+                    <ListItem.Title style={styles.hour}>8H30</ListItem.Title>
                     <ListItem.Title style={styles.title}>Salle de réveil A</ListItem.Title>
                     <ListItem.Subtitle style={styles.subTitle}>{e.salleReveilA}</ListItem.Subtitle>
                     <ListItem.Title style={styles.title}>Salle de réveil B</ListItem.Title>
